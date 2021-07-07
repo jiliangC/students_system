@@ -30,6 +30,21 @@ public class Addstuden extends JFrame {
         // TODO add your code here 添加的事件
     }
 
+    private void manActionPerformed(ActionEvent e) {
+        if(man.isSelected()){
+            woman.setSelected(false);
+        }
+        // TODO add your code here
+    }
+
+
+    private void womanActionPerformed(ActionEvent e) {
+            if(woman.isSelected()){
+                man.setSelected(false);
+            }
+        // TODO add your code here
+    }
+
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - unknown
@@ -39,8 +54,6 @@ public class Addstuden extends JFrame {
         number = new JTextField();
         label2 = new JLabel();
         name = new JTextField();
-        label3 = new JLabel();
-        sex = new JComboBox();
         label4 = new JLabel();
         chinese = new JTextField();
         label5 = new JLabel();
@@ -48,6 +61,8 @@ public class Addstuden extends JFrame {
         label6 = new JLabel();
         textField3 = new JTextField();
         button1 = new JButton();
+        man = new JRadioButton();
+        woman = new JRadioButton();
 
         //======== this ========
         var contentPane = getContentPane();
@@ -55,13 +70,12 @@ public class Addstuden extends JFrame {
 
         //======== panel1 ========
         {
-            panel1.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing
-            . border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e" , javax. swing .border . TitledBorder
-            . CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "D\u0069al\u006fg", java .
-            awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,panel1. getBorder () ) )
-            ; panel1. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
-            ) { if( "\u0062or\u0064er" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } )
-            ;
+            panel1.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.
+            border.EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER
+            ,javax.swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font
+            .BOLD,12),java.awt.Color.red),panel1. getBorder()));panel1. addPropertyChangeListener(
+            new java.beans.PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r"
+            .equals(e.getPropertyName()))throw new RuntimeException();}});
             panel1.setLayout(new BorderLayout());
 
             //======== panel2 ========
@@ -81,13 +95,6 @@ public class Addstuden extends JFrame {
                 label2.setBounds(70, 80, label2.getPreferredSize().width, 25);
                 panel2.add(name);
                 name.setBounds(110, 80, 150, 25);
-
-                //---- label3 ----
-                label3.setText("\u6027\u522b");
-                panel2.add(label3);
-                label3.setBounds(70, 125, label3.getPreferredSize().width, 25);
-                panel2.add(sex);
-                sex.setBounds(110, 125, sex.getPreferredSize().width, 25);
 
                 //---- label4 ----
                 label4.setText("\u8bed\u6587");
@@ -115,6 +122,18 @@ public class Addstuden extends JFrame {
                 button1.addActionListener(e -> button1ActionPerformed(e));
                 panel2.add(button1);
                 button1.setBounds(70, 320, 190, 25);
+
+                //---- man ----
+                man.setText("\u7537");
+                man.addActionListener(e -> manActionPerformed(e));
+                panel2.add(man);
+                man.setBounds(110, 125, man.getPreferredSize().width, 25);
+
+                //---- woman ----
+                woman.setText("\u5973");
+                woman.addActionListener(e -> womanActionPerformed(e));
+                panel2.add(woman);
+                woman.setBounds(210, 125, woman.getPreferredSize().width, 25);
 
                 {
                     // compute preferred size
@@ -150,8 +169,6 @@ public class Addstuden extends JFrame {
     private JTextField number;
     private JLabel label2;
     private JTextField name;
-    private JLabel label3;
-    private JComboBox sex;
     private JLabel label4;
     private JTextField chinese;
     private JLabel label5;
@@ -159,5 +176,7 @@ public class Addstuden extends JFrame {
     private JLabel label6;
     private JTextField textField3;
     private JButton button1;
+    private JRadioButton man;
+    private JRadioButton woman;
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
