@@ -39,19 +39,22 @@ new FormModel {
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menu1Item1"
 						"text": "添加"
-						"icon": new com.jformdesigner.model.SwingIcon( 0, "/icon/login.png" )
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/icon/plus.png" )
 					} )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menu1Item2"
 						"text": "删除"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/icon/reduce.png" )
 					} )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menu1Item3"
 						"text": "查找"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/icon/search.png" )
 					} )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menu1Item4"
 						"text": "修改"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/icon/change.png" )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
@@ -93,4 +96,3 @@ new FormModel {
 		} )
 	}
 }
-
