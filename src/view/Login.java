@@ -54,7 +54,7 @@ public class Login extends JFrame {
             panel1.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax
                     .swing.border.EmptyBorder(0, 0, 0, 0), "Designed by cjl", javax.swing
                     .border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM, new java.awt.
-                    Font("Dia\u006cog", java.awt.Font.BOLD, 12), Color.GRAY
+                    Font("楷体", java.awt.Font.BOLD, 12), Color.GRAY
             ), panel1.getBorder()));
 
             panel1.setLayout(null);
@@ -62,7 +62,8 @@ public class Login extends JFrame {
             Username.setBounds(150, 75, 210, 25);
 
             //---- logo ----
-            logo.setText("\u767b\u5f55");
+            logo.setText("登录");
+            logo.setBorderPainted(true);//显示边框
             logo.addActionListener(e -> button1ActionPerformed());
             panel1.add(logo);
             logo.setBounds(150, 145, 210, 25);
@@ -88,7 +89,6 @@ public class Login extends JFrame {
             panel2.setBounds(0, 20, 400, panel2.getPreferredSize().height);
 
             {
-                // compute preferred size
                 Dimension preferredSize = new Dimension();
                 for (int i = 0; i < panel1.getComponentCount(); i++) {
                     Rectangle bounds = panel1.getComponent(i).getBounds();

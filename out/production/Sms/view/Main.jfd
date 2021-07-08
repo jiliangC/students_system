@@ -3,13 +3,93 @@ JFDML JFormDesigner: "7.0.4.0.360" Java: "11.0.11" encoding: "UTF-8"
 new FormModel {
 	contentType: "form/swing"
 	root: new FormRoot {
-		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class com.jformdesigner.runtime.NullLayout ) {
-			"autoSize": false
-		} ) {
+		add( new FormWindow( "javax.swing.JFrame", new FormLayoutManager( class java.awt.BorderLayout ) ) {
 			name: "this"
+			"foreground": sfield java.awt.SystemColor menu
+			"font": new java.awt.Font( "Dialog", 0, 13 )
+			"$locationPolicy": 1
+			add( new FormContainer( "javax.swing.JPanel", new FormLayoutManager( class java.awt.BorderLayout ) ) {
+				name: "panel1"
+				add( new FormContainer( "javax.swing.JScrollPane", new FormLayoutManager( class javax.swing.JScrollPane ) ) {
+					name: "scrollPane1"
+					add( new FormComponent( "javax.swing.JTable" ) {
+						name: "table1"
+						"border": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						"autoResizeMode": 4
+						"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+						"font": new java.awt.Font( "Dialog", 0, 13 )
+					} )
+				}, new FormLayoutConstraints( class java.lang.String ) {
+					"value": "Center"
+				} )
+			}, new FormLayoutConstraints( class java.lang.String ) {
+				"value": "Center"
+			} )
+			menuBar: new FormContainer( "javax.swing.JMenuBar", new FormLayoutManager( class javax.swing.JMenuBar ) ) {
+				name: "menuBar1"
+				"borderPainted": false
+				"preferredSize": new java.awt.Dimension( 183, 30 )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "menu1"
+					"text": "基本操作"
+					"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"rolloverIcon": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"pressedIcon": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menu1Item1"
+						"text": "添加"
+						"icon": new com.jformdesigner.model.SwingIcon( 0, "/icon/login.png" )
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menu1Item2"
+						"text": "删除"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menu1Item3"
+						"text": "查找"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menu1Item4"
+						"text": "修改"
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "menu2"
+					"text": "导入导出"
+					"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuItem2"
+						"text": "导入学生信息"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuItem3"
+						"text": "导出学生成绩"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuItem4"
+						"text": "导出学生信息"
+					} )
+				} )
+				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
+					name: "menu3"
+					"text": "帮助关于"
+					"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuItem5"
+						"text": "帮助"
+					} )
+					add( new FormComponent( "javax.swing.JMenuItem" ) {
+						name: "menuItem6"
+						"text": "关于"
+					} )
+				} )
+			}
 		}, new FormLayoutConstraints( null ) {
 			"location": new java.awt.Point( 0, 0 )
-			"size": new java.awt.Dimension( 645, 520 )
+			"size": new java.awt.Dimension( 615, 405 )
 		} )
 	}
 }

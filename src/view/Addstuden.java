@@ -17,7 +17,7 @@ public class Addstuden extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
     //判断字符串是否为数字
-    public static boolean isNumeric(String str) {
+    private static boolean isNumeric(String str) {
         for (int i = str.length(); --i >= 0; ) {
             if (!Character.isDigit(str.charAt(i))) {
                 return false;
@@ -62,7 +62,7 @@ public class Addstuden extends JFrame {
         }
     }
 
-
+    //UI设计
     private void initComponents() {
         JPanel panel1 = new JPanel();
         panel2 = new JPanel();
@@ -83,9 +83,9 @@ public class Addstuden extends JFrame {
         //======== this ========
         var contentPane = getContentPane();
         contentPane.setLayout(null);
-
         //======== panel1 ========
         {
+
             panel1.setLayout(new BorderLayout());
 
             //======== panel2 ========
@@ -149,7 +149,7 @@ public class Addstuden extends JFrame {
             panel1.add(panel2, BorderLayout.CENTER);
         }
         contentPane.add(panel1);
-        panel1.setBounds(0, 0, 330, 393);
+        panel1.setBounds(0, 0, 330, 410);
 
         contentPane.setPreferredSize(new Dimension(330, 410));
         pack();
