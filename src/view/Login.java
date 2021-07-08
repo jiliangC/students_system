@@ -19,18 +19,16 @@ public class Login extends JFrame {
     }
 
     private void button1ActionPerformed() {
-        String username=Username.getText();
-        String password= String.valueOf(Password.getPassword());
-        if (username.equals("1")&&password.equals("1")){
+        String username = Username.getText();
+        String password = String.valueOf(Password.getPassword());
+        if (username.equals("1") && password.equals("1")) {
             System.out.println("登录成功");
             setVisible(false);
             new Main();
             //下一个窗口
-        }
-        else if (username.trim().length() == 0 || password.trim().length() == 0){
+        } else if (username.trim().length() == 0 || password.trim().length() == 0) {
             JOptionPane.showMessageDialog(null, "用户名或密码不能为空");
-        }
-        else {
+        } else {
             JOptionPane.showMessageDialog(null, "用户名或密码不正确");
             Username.setText("");
             Password.setText("");
@@ -54,10 +52,10 @@ public class Login extends JFrame {
 
         {
             panel1.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax
-                    .swing.border.EmptyBorder(0,0,0,0), "Designed by cjl",javax.swing
-                    .border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM, new java.awt.
+                    .swing.border.EmptyBorder(0, 0, 0, 0), "Designed by cjl", javax.swing
+                    .border.TitledBorder.CENTER, javax.swing.border.TitledBorder.BOTTOM, new java.awt.
                     Font("Dia\u006cog", java.awt.Font.BOLD, 12), Color.GRAY
-            ),panel1. getBorder()));
+            ), panel1.getBorder()));
 
             panel1.setLayout(null);
             panel1.add(Username);
@@ -70,7 +68,7 @@ public class Login extends JFrame {
             logo.setBounds(150, 145, 210, 25);
 
             //---- label1 ----
-            label1.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/people.png"))));
+            label1.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/login.png"))));
             label1.setBackground(new Color(51, 255, 0, 255));
             panel1.add(label1);
             label1.setBounds(35, 75, 95, 95);
@@ -92,7 +90,7 @@ public class Login extends JFrame {
             {
                 // compute preferred size
                 Dimension preferredSize = new Dimension();
-                for(int i = 0; i < panel1.getComponentCount(); i++) {
+                for (int i = 0; i < panel1.getComponentCount(); i++) {
                     Rectangle bounds = panel1.getComponent(i).getBounds();
                     preferredSize.width = Math.max(bounds.x + bounds.width, preferredSize.width);
                     preferredSize.height = Math.max(bounds.y + bounds.height, preferredSize.height);
