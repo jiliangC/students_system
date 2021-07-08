@@ -42,7 +42,7 @@ public class Main extends JFrame {
         menuItem6 = new JMenuItem();
         panel1 = new JPanel();
         scrollPane1 = new JScrollPane();
-        table1 = new JTable();
+        table1 = new JTable(information,subject);
 
         //======== this ========
         setForeground(SystemColor.menu);
@@ -62,22 +62,30 @@ public class Main extends JFrame {
                 menu1.setRolloverIcon(null);
                 menu1.setPressedIcon(null);
                 menu1.setIcon(null);
+                menu1.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
 
                 //---- menu1Item1 ----
                 menu1Item1.setText("\u6dfb\u52a0");
-                menu1Item1.setIcon(new ImageIcon(getClass().getResource("/icon/login.png")));
+                menu1Item1.setIcon(new ImageIcon(getClass().getResource("/icon/plus.png")));
+                menu1Item1.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
                 menu1.add(menu1Item1);
 
                 //---- menu1Item2 ----
                 menu1Item2.setText("\u5220\u9664");
+                menu1Item2.setIcon(new ImageIcon(getClass().getResource("/icon/reduce.png")));
+                menu1Item2.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
                 menu1.add(menu1Item2);
 
                 //---- menu1Item3 ----
                 menu1Item3.setText("\u67e5\u627e");
+                menu1Item3.setIcon(new ImageIcon(getClass().getResource("/icon/search.png")));
+                menu1Item3.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
                 menu1.add(menu1Item3);
 
                 //---- menu1Item4 ----
                 menu1Item4.setText("\u4fee\u6539");
+                menu1Item4.setIcon(new ImageIcon(getClass().getResource("/icon/change.png")));
+                menu1Item4.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
                 menu1.add(menu1Item4);
             }
             menuBar1.add(menu1);
@@ -87,17 +95,21 @@ public class Main extends JFrame {
                 menu2.setText("\u5bfc\u5165\u5bfc\u51fa");
                 menu2.setMinimumSize(null);
                 menu2.setIcon(null);
+                menu2.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
 
                 //---- menuItem2 ----
                 menuItem2.setText("\u5bfc\u5165\u5b66\u751f\u4fe1\u606f");
+                menuItem2.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
                 menu2.add(menuItem2);
 
                 //---- menuItem3 ----
                 menuItem3.setText("\u5bfc\u51fa\u5b66\u751f\u6210\u7ee9");
+                menuItem3.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
                 menu2.add(menuItem3);
 
                 //---- menuItem4 ----
                 menuItem4.setText("\u5bfc\u51fa\u5b66\u751f\u4fe1\u606f");
+                menuItem4.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
                 menu2.add(menuItem4);
             }
             menuBar1.add(menu2);
@@ -107,13 +119,16 @@ public class Main extends JFrame {
                 menu3.setText("\u5e2e\u52a9\u5173\u4e8e");
                 menu3.setPreferredSize(null);
                 menu3.setIcon(null);
+                menu3.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
 
                 //---- menuItem5 ----
                 menuItem5.setText("\u5e2e\u52a9");
+                menuItem5.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
                 menu3.add(menuItem5);
 
                 //---- menuItem6 ----
                 menuItem6.setText("\u5173\u4e8e");
+                menuItem6.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
                 menu3.add(menuItem6);
             }
             menuBar1.add(menu3);
@@ -122,13 +137,12 @@ public class Main extends JFrame {
 
         //======== panel1 ========
         {
-            panel1.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new
-            javax . swing. border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frm\u0044es\u0069gn\u0065r \u0045va\u006cua\u0074io\u006e" , javax
-            . swing .border . TitledBorder. CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java
-            . awt .Font ( "D\u0069al\u006fg", java .awt . Font. BOLD ,12 ) ,java . awt
-            . Color .red ) ,panel1. getBorder () ) ); panel1. addPropertyChangeListener( new java. beans .
-            PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e) { if( "\u0062or\u0064er" .
-            equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } );
+            panel1.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.
+            EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER,javax.swing
+            .border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),
+            java.awt.Color.red),panel1. getBorder()));panel1. addPropertyChangeListener(new java.beans.PropertyChangeListener()
+            {@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.getPropertyName()))
+            throw new RuntimeException();}});
             panel1.setLayout(new BorderLayout());
 
             //======== scrollPane1 ========

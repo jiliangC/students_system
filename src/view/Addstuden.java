@@ -80,6 +80,15 @@ public class Addstuden extends JFrame {
         Man = new JRadioButton();
         Woman = new JRadioButton();
 
+        Number.setOpaque(false);
+        Name.setOpaque(false);
+        Chinese.setOpaque(false);
+        Maths.setOpaque(false);
+        English.setOpaque(false);
+        Add1.setContentAreaFilled(false);
+
+
+
         //======== this ========
         var contentPane = getContentPane();
         contentPane.setLayout(null);
@@ -128,7 +137,7 @@ public class Addstuden extends JFrame {
                 English.setBounds(110, 260, 150, 25);
 
                 //---- Add1 ----
-                Add1.setText("登录");
+                Add1.setText("添加");
                 Add1.addActionListener(this::button1ActionPerformed);
                 panel2.add(Add1);
                 Add1.setBounds(70, 320, 190, 25);

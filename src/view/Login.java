@@ -45,6 +45,11 @@ public class Login extends JFrame {
         Password = new JPasswordField();
         panel2 = new JPanel();
         label2 = new JLabel();
+        //编辑框透明
+        Username.setOpaque(false);
+        Password.setOpaque(false);
+        logo.setOpaque(false);
+        logo.setContentAreaFilled(false); //背景透明
 
         //======== this ========
         var contentPane = getContentPane();
@@ -60,6 +65,7 @@ public class Login extends JFrame {
             panel1.setLayout(null);
             panel1.add(Username);
             Username.setBounds(150, 75, 210, 25);
+
 
             //---- logo ----
             logo.setText("登录");
