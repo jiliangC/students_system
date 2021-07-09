@@ -36,25 +36,30 @@ new FormModel {
 					"rolloverIcon": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					"pressedIcon": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"font": new java.awt.Font( "Microsoft YaHei UI", 1, 14 )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menu1Item1"
 						"text": "添加"
 						"icon": new com.jformdesigner.model.SwingIcon( 0, "/icon/plus.png" )
+						"font": new java.awt.Font( "Microsoft YaHei UI", 1, 14 )
 					} )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menu1Item2"
 						"text": "删除"
 						"icon": new com.jformdesigner.model.SwingIcon( 0, "/icon/reduce.png" )
+						"font": new java.awt.Font( "Microsoft YaHei UI", 1, 14 )
 					} )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menu1Item3"
 						"text": "查找"
 						"icon": new com.jformdesigner.model.SwingIcon( 0, "/icon/search.png" )
+						"font": new java.awt.Font( "Microsoft YaHei UI", 1, 14 )
 					} )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menu1Item4"
 						"text": "修改"
 						"icon": new com.jformdesigner.model.SwingIcon( 0, "/icon/change.png" )
+						"font": new java.awt.Font( "Microsoft YaHei UI", 1, 14 )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
@@ -62,17 +67,21 @@ new FormModel {
 					"text": "导入导出"
 					"minimumSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"font": new java.awt.Font( "Microsoft YaHei UI", 1, 14 )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menuItem2"
 						"text": "导入学生信息"
+						"font": new java.awt.Font( "Microsoft YaHei UI", 1, 14 )
 					} )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menuItem3"
 						"text": "导出学生成绩"
+						"font": new java.awt.Font( "Microsoft YaHei UI", 1, 14 )
 					} )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menuItem4"
 						"text": "导出学生信息"
+						"font": new java.awt.Font( "Microsoft YaHei UI", 1, 14 )
 					} )
 				} )
 				add( new FormContainer( "javax.swing.JMenu", new FormLayoutManager( class javax.swing.JMenu ) ) {
@@ -80,13 +89,16 @@ new FormModel {
 					"text": "帮助关于"
 					"preferredSize": sfield com.jformdesigner.model.FormObject NULL_VALUE
 					"icon": sfield com.jformdesigner.model.FormObject NULL_VALUE
+					"font": new java.awt.Font( "Microsoft YaHei UI", 1, 14 )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menuItem5"
 						"text": "帮助"
+						"font": new java.awt.Font( "Microsoft YaHei UI", 1, 14 )
 					} )
 					add( new FormComponent( "javax.swing.JMenuItem" ) {
 						name: "menuItem6"
 						"text": "关于"
+						"font": new java.awt.Font( "Microsoft YaHei UI", 1, 14 )
 					} )
 				} )
 			}
