@@ -3,27 +3,39 @@
  */
 
 package view;
+import main_information.Str_information;
+
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
+import javax.swing.border.*;
+import javax.swing.table.*;
 
 /**
- * @author unknown
+ * @author cjl
  */
-public class Main extends JFrame {
+public class Main<str> extends JFrame {
+
+
+
     public static void main(String[] args) {
         new Main();
     }
     public Main() {
+        Str_information strInformation = new Str_information();
+        String[][] str_s=strInformation.get_str();
+
         setVisible(true);
-        initComponents();
+        initComponents(str_s);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
-    private void initComponents() {
-        String[] subject = {"学号","姓名","性别","语文","数学","英语"};
-        String[][] information={
-                {"2007310421","小华","男","87","67","96"},
-                {"2007310421","小华","男","87","67","96"}};
+    private void menu1Item1ActionPerformed(ActionEvent e) {
+        new Addstuden();
+        // TODO add your code here
+    }
+
+    private void initComponents(String[][] str_s) {
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - unknown
@@ -42,7 +54,7 @@ public class Main extends JFrame {
         menuItem6 = new JMenuItem();
         panel1 = new JPanel();
         scrollPane1 = new JScrollPane();
-        table1 = new JTable(information,subject);
+        table1 = new JTable();
 
         //======== this ========
         setForeground(SystemColor.menu);
@@ -68,6 +80,7 @@ public class Main extends JFrame {
                 menu1Item1.setText("\u6dfb\u52a0");
                 menu1Item1.setIcon(new ImageIcon(getClass().getResource("/icon/plus.png")));
                 menu1Item1.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+                menu1Item1.addActionListener(e -> menu1Item1ActionPerformed(e));
                 menu1.add(menu1Item1);
 
                 //---- menu1Item2 ----
@@ -137,28 +150,52 @@ public class Main extends JFrame {
 
         //======== panel1 ========
         {
-            panel1.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border.
-            EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER,javax.swing
-            .border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),
-            java.awt.Color.red),panel1. getBorder()));panel1. addPropertyChangeListener(new java.beans.PropertyChangeListener()
-            {@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.getPropertyName()))
-            throw new RuntimeException();}});
+            panel1.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new
+            javax.swing.border.EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax
+            .swing.border.TitledBorder.CENTER,javax.swing.border.TitledBorder.BOTTOM,new java
+            .awt.Font("Dia\u006cog",java.awt.Font.BOLD,12),java.awt
+            .Color.red),panel1. getBorder()));panel1. addPropertyChangeListener(new java.beans.
+            PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".
+            equals(e.getPropertyName()))throw new RuntimeException();}});
             panel1.setLayout(new BorderLayout());
 
             //======== scrollPane1 ========
             {
+                scrollPane1.setBorder(new EmptyBorder(5, 0, 0, 0));
 
                 //---- table1 ----
-                table1.setBorder(null);
+
+                table1.setBorder(new EmptyBorder(5, 0, 0, 0));
                 table1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
                 table1.setPreferredSize(null);
-                table1.setFont(new Font(Font.DIALOG, Font.PLAIN, 13));
+                table1.updateUI();
+                table1.setModel(new DefaultTableModel(
+                    str_s,
+                    new String[] {
+                        "\u5b66\u53f7", "\u59d3\u540d", "\u6027\u522b", "\u8bed\u6587", "\u6570\u5b66", "\u82f1\u8bed", "\u603b\u5206"
+                    }
+                ) {
+                    Class<?>[] columnTypes = new Class<?>[] {
+                        String.class, String.class, String.class, Integer.class, Integer.class, Integer.class, Integer.class
+                    };
+                    boolean[] columnEditable = new boolean[] {
+                        false, false, false, false, false, false, false
+                    };
+                    @Override
+                    public Class<?> getColumnClass(int columnIndex) {
+                        return columnTypes[columnIndex];
+                    }
+                    @Override
+                    public boolean isCellEditable(int rowIndex, int columnIndex) {
+                        return columnEditable[columnIndex];
+                    }
+                });
                 scrollPane1.setViewportView(table1);
             }
             panel1.add(scrollPane1, BorderLayout.CENTER);
         }
         contentPane.add(panel1, BorderLayout.CENTER);
-        pack();
+        setSize(710, 440);
         setLocationRelativeTo(null);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
     }

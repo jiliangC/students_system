@@ -1,7 +1,10 @@
 package view;
 
+import main_information.Str_information;
+
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Arrays;
 import javax.swing.*;
 
 
@@ -44,8 +47,29 @@ public class Addstuden extends JFrame {
         } else if (!isNumeric(english) || english.length() >= 4) {
             JOptionPane.showMessageDialog(null, "英语成绩格式不正确");
         } else {
+
+            int ch = Integer.parseInt(chinese);
+            int ma = Integer.parseInt(math);
+            int en = Integer.parseInt(english);
             String info = "已添加\n" + "姓名 " + name + "\n" + "学号 " + number + "\n" + "性别 " + sex + "\n" + "语文 " + chinese + "  " + "数学 " + math + "  " + "英语 " + english;
             JOptionPane.showMessageDialog(null, info);
+
+            Str_information strInformation = new Str_information();
+            String[][] strings=strInformation.get_str();
+
+            int i=strings.length;
+
+            for (int k=0;k<i;k++){
+                if (strings[k][0] == null){
+                    strings[k]=new String[]{number,name,sex,chinese,math,english, String.valueOf(ch+ma+en)};
+                    break;
+                }
+            }
+            strInformation.set_str(strings);
+            setVisible(false);
+            new Main();
+            System.out.println(Arrays.deepToString(strings));
+
             // TODO add your code 添加的事件
         }
 

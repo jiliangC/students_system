@@ -1,6 +1,8 @@
 
 package view;
 
+import main_information.Str_information;
+
 import java.awt.*;
 import java.util.Objects;
 import javax.swing.*;
@@ -22,6 +24,15 @@ public class Login extends JFrame {
         String username = Username.getText();
         String password = String.valueOf(Password.getPassword());
         if (username.equals("1") && password.equals("1")) {
+
+            Str_information strInformation = new Str_information();
+            String[][] ss= strInformation.get_str();
+            int i = ss.length;
+            System.out.println(i);
+            ss[0]=new String[]{"ff22","33","44","55","66","77","88"};
+            strInformation.set_str(ss);
+
+
             System.out.println("登录成功");
             setVisible(false);
             new Main();
@@ -37,7 +48,6 @@ public class Login extends JFrame {
     }
 
     private void initComponents() {
-
         panel1 = new JPanel();
         Username = new JTextField();
         JButton logo = new JButton();
@@ -75,8 +85,8 @@ public class Login extends JFrame {
             logo.setBounds(150, 145, 210, 25);
 
             //---- label1 ----
+
             label1.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/login.png"))));
-            label1.setBackground(new Color(51, 255, 0, 255));
             panel1.add(label1);
             label1.setBounds(35, 75, 95, 95);
             panel1.add(Password);
