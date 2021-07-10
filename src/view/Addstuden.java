@@ -13,11 +13,10 @@ public class Addstuden extends JFrame {
         new Addstuden();
     }
 
-    public Addstuden() {
-        setTitle("增加学生");
+    public Addstuden() { setTitle("增加学生");
         setVisible(true);
         initComponents();
-        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
     //判断字符串是否为数字
     private static boolean isNumeric(String str) {
@@ -55,20 +54,20 @@ public class Addstuden extends JFrame {
             JOptionPane.showMessageDialog(null, info);
 
             Str_information strInformation = new Str_information();
-            String[][] strings=strInformation.get_str();
-
-            int i=strings.length;
-
-            for (int k=0;k<i;k++){
-                if (strings[k][0] == null){
-                    strings[k]=new String[]{number,name,sex,chinese,math,english, String.valueOf(ch+ma+en)};
-                    break;
-                }
-            }
-            strInformation.set_str(strings);
-            setVisible(false);
-            new Main();
-            System.out.println(Arrays.deepToString(strings));
+            String[] a ={number,name,sex,chinese,math,english,String.valueOf(ch+ma+en)};
+            strInformation.set_s(a);
+            //String[][] strings=strInformation.get_str();
+//            int i=strings.length;
+//
+//            for (int k=0;k<i;k++){
+//                if (strings[k][0] == null){
+//                    strings[k]=new String[]{number,name,sex,chinese,math,english, String.valueOf(ch+ma+en)};
+//                    break;
+//                }
+//            }
+//            strInformation.set_str(strings);
+           // System.out.println(Arrays.deepToString(strings));
+            dispose();
 
             // TODO add your code 添加的事件
         }

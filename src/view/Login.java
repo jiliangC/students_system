@@ -2,7 +2,7 @@
 package view;
 
 import main_information.Str_information;
-
+import java.util.ArrayList;
 import java.awt.*;
 import java.util.Objects;
 import javax.swing.*;
@@ -26,15 +26,21 @@ public class Login extends JFrame {
         if (username.equals("1") && password.equals("1")) {
 
             Str_information strInformation = new Str_information();
-            String[][] ss= strInformation.get_str();
-            int i = ss.length;
-            System.out.println(i);
-            ss[0]=new String[]{"ff22","33","44","55","66","77","88"};
-            strInformation.set_str(ss);
+            String[] a ={"2007310421","chen","nan","67","76","87","57"};
+            strInformation.set_s(a);
+
+
+//            Str_information strInformation = new Str_information();
+//            String[][] ss= strInformation.get_str();
+//            int i = ss.length;
+//            System.out.println(i);
+//            ss[0]=new String[]{"ff22","33","44","55","66","77","88"};
+//            strInformation.set_str(ss);
 
 
             System.out.println("登录成功");
-            setVisible(false);
+            dispose();//关闭窗口
+
             new Main();
             //下一个窗口
         } else if (username.trim().length() == 0 || password.trim().length() == 0) {
