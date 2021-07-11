@@ -5,7 +5,6 @@
 package view;
 
 import main_information.Str_information;
-
 import java.util.ArrayList;
 import java.awt.*;
 import java.awt.event.*;
@@ -23,11 +22,10 @@ public class Main extends JFrame {
     }
 
     public Main() {
+        setTitle("学生管理系统");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
         initComponents();
-
-
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
@@ -41,7 +39,6 @@ public class Main extends JFrame {
         ArrayList<String[]> str_sa = strInformation.get_s();
         String[][] str_s = str_sa.toArray(new String[0][0]);
         set_table(str_s);
-
 
         // TODO add your code here
     }
@@ -84,6 +81,11 @@ public class Main extends JFrame {
 
     private void menu1Item2ActionPerformed(ActionEvent e) {
         new DeleteStudents();
+        // TODO add your code here
+    }
+
+    private void menu1Item3ActionPerformed(ActionEvent e) {
+        new Search();
         // TODO add your code here
     }
 
@@ -152,6 +154,7 @@ public class Main extends JFrame {
                 menu1Item3.setText("\u67e5\u627e");
                 menu1Item3.setIcon(new ImageIcon(getClass().getResource("/icon/search.png")));
                 menu1Item3.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+                menu1Item3.addActionListener(e -> menu1Item3ActionPerformed(e));
                 menu1.add(menu1Item3);
 
                 //---- menu1Item4 ----
@@ -224,12 +227,13 @@ public class Main extends JFrame {
 
         //======== panel1 ========
         {
-            panel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-            ( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-            . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-            . Color. red) ,panel1. getBorder( )) ); panel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
-            ; }} );
+            panel1.setBorder ( new javax . swing. border .CompoundBorder ( new javax . swing. border .TitledBorder ( new javax . swing
+            . border .EmptyBorder ( 0, 0 ,0 , 0) ,  "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn" , javax. swing .border . TitledBorder
+            . CENTER ,javax . swing. border .TitledBorder . BOTTOM, new java. awt .Font ( "Dia\u006cog", java .
+            awt . Font. BOLD ,12 ) ,java . awt. Color .red ) ,panel1. getBorder () ) )
+            ; panel1. addPropertyChangeListener( new java. beans .PropertyChangeListener ( ){ @Override public void propertyChange (java . beans. PropertyChangeEvent e
+            ) { if( "\u0062ord\u0065r" .equals ( e. getPropertyName () ) )throw new RuntimeException( ) ;} } )
+            ;
             panel1.setLayout(new BorderLayout());
 
             //======== scrollPane1 ========

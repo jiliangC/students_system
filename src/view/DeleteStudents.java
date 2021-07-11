@@ -24,16 +24,17 @@ public class DeleteStudents extends JFrame {
     }
 
     private void deleteActionPerformed(ActionEvent e) {
-        boolean judge=false;
-        int index=-1;
         String number = textField1.getText();
+
+        int index=-1;
+
         Str_information str_information = new Str_information();
         ArrayList<String[]> strings = str_information.get_s();
 
         for (String[] strings1:strings){
             if (strings1[0].equals(number)){
                 index=strings.indexOf(strings1);
-                int is_delete=JOptionPane.showConfirmDialog(null,"是否删除该学生信息","注意",JOptionPane.YES_NO_OPTION);
+                int is_delete= JOptionPane.showConfirmDialog(null,"是否删除该学生信息","注意",JOptionPane.YES_NO_OPTION);
                 if (is_delete==JOptionPane.YES_OPTION){ //同意
                     strings.remove(index);
                     str_information.replace(strings);
@@ -44,6 +45,8 @@ public class DeleteStudents extends JFrame {
         if (index==-1){
             JOptionPane.showMessageDialog(null,"未找到该学生信息");
         }
+
+
 
         // TODO add your code here
     }
