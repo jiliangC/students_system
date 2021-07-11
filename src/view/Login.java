@@ -2,7 +2,6 @@
 package view;
 
 import main_information.Str_information;
-import java.util.ArrayList;
 import java.awt.*;
 import java.util.Objects;
 import javax.swing.*;

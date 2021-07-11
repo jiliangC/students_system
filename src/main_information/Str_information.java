@@ -11,6 +11,7 @@ public class Str_information {
     public void set_s(String[] strings){
         Str_information.str_a.add(strings);
     }
+    public void replace(ArrayList<String[]> strings){Str_information.str_a=strings;}
 
 
 //    public static String[][] str_s=new String[10][7];

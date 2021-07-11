@@ -23,11 +23,6 @@ public class Main extends JFrame {
     }
 
     public Main() {
-
-//        Str_information strInformation = new Str_information();
-//        ArrayList<String[]> str_s = strInformation.get_s();
-
-        //String[][] str_s=strInformation.get_str();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
         initComponents();
@@ -36,23 +31,32 @@ public class Main extends JFrame {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
-    private void menu1Item1ActionPerformed(ActionEvent e) {
+    private void menu1Item1ActionPerformed(ActionEvent e) { //增加
         new Addstuden();
         // TODO add your code here
     }
 
-    private void button1ActionPerformed(ActionEvent e) {
+    private void button1ActionPerformed(ActionEvent e) { //刷新按钮
         Str_information strInformation = new Str_information();
         ArrayList<String[]> str_sa = strInformation.get_s();
         String[][] str_s = str_sa.toArray(new String[0][0]);
-
         set_table(str_s);
 
 
         // TODO add your code here
     }
-
+    //设置表格
     private void set_table(String[][] str_s) {
+
+        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();//单元格渲染器
+        tcr.setHorizontalAlignment(JLabel.CENTER);//居中显示
+        table1.setDefaultRenderer(Object.class, tcr);//设置渲染器
+
+
+        JTableHeader jTableHeader = table1.getTableHeader();// 获取表头
+        jTableHeader.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 12));
+        table1.setRowHeight(20); //设置行高
+
         table1.setModel(new DefaultTableModel(
                 str_s,
                 new String[]{
@@ -76,6 +80,11 @@ public class Main extends JFrame {
                 return columnEditable[columnIndex];
             }
         });
+    }
+
+    private void menu1Item2ActionPerformed(ActionEvent e) {
+        new DeleteStudents();
+        // TODO add your code here
     }
 
     public void initComponents() {
@@ -136,6 +145,7 @@ public class Main extends JFrame {
                 menu1Item2.setText("\u5220\u9664");
                 menu1Item2.setIcon(new ImageIcon(getClass().getResource("/icon/reduce.png")));
                 menu1Item2.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+                menu1Item2.addActionListener(e -> menu1Item2ActionPerformed(e));
                 menu1.add(menu1Item2);
 
                 //---- menu1Item3 ----
@@ -214,18 +224,12 @@ public class Main extends JFrame {
 
         //======== panel1 ========
         {
-            panel1.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.
-                    border.EmptyBorder(0, 0, 0, 0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion", javax.swing.border.TitledBorder.CENTER
-                    , javax.swing.border.TitledBorder.BOTTOM, new java.awt.Font("Dia\u006cog", java.awt.Font
-                    .BOLD, 12), java.awt.Color.red), panel1.getBorder()));
-            panel1.addPropertyChangeListener(
-                    new java.beans.PropertyChangeListener() {
-                        @Override
-                        public void propertyChange(java.beans.PropertyChangeEvent e) {
-                            if ("bord\u0065r"
-                                    .equals(e.getPropertyName())) throw new RuntimeException();
-                        }
-                    });
+            panel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
+            ( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border
+            . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
+            . Color. red) ,panel1. getBorder( )) ); panel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
+            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
+            ; }} );
             panel1.setLayout(new BorderLayout());
 
             //======== scrollPane1 ========
@@ -259,14 +263,6 @@ public class Main extends JFrame {
 
         button1.setContentAreaFilled(false);
 
-        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();//单元格渲染器
-        tcr.setHorizontalAlignment(JLabel.CENTER);//居中显示
-        table1.setDefaultRenderer(Object.class, tcr);//设置渲染器
-
-
-        JTableHeader jTableHeader = table1.getTableHeader();// 获取表头
-        jTableHeader.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 12));
-        table1.setRowHeight(20); //设置行高
 
 
     }
