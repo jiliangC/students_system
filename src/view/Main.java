@@ -5,7 +5,6 @@
 package view;
 
 import main_information.Str_information;
-
 import java.util.ArrayList;
 import java.awt.*;
 import java.awt.event.*;
@@ -23,11 +22,10 @@ public class Main extends JFrame {
     }
 
     public Main() {
+        setTitle("学生管理系统");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setVisible(true);
         initComponents();
-
-
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
@@ -42,11 +40,10 @@ public class Main extends JFrame {
         String[][] str_s = str_sa.toArray(new String[0][0]);
         set_table(str_s);
 
-
         // TODO add your code here
     }
     //设置表格
-    private void set_table(String[][] str_s) {
+    public void set_table(String[][] str_s) {
 
         DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();//单元格渲染器
         tcr.setHorizontalAlignment(JLabel.CENTER);//居中显示
@@ -54,7 +51,7 @@ public class Main extends JFrame {
 
 
         JTableHeader jTableHeader = table1.getTableHeader();// 获取表头
-        jTableHeader.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 12));
+        //jTableHeader.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 12));
         table1.setRowHeight(20); //设置行高
 
         table1.setModel(new DefaultTableModel(
@@ -84,6 +81,16 @@ public class Main extends JFrame {
 
     private void menu1Item2ActionPerformed(ActionEvent e) {
         new DeleteStudents();
+        // TODO add your code here
+    }
+
+    private void menu1Item3ActionPerformed(ActionEvent e) {
+        new Search();
+        // TODO add your code here
+    }
+
+    private void menu1Item4ActionPerformed(ActionEvent e) {
+        new Revise();
         // TODO add your code here
     }
 
@@ -152,12 +159,14 @@ public class Main extends JFrame {
                 menu1Item3.setText("\u67e5\u627e");
                 menu1Item3.setIcon(new ImageIcon(getClass().getResource("/icon/search.png")));
                 menu1Item3.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+                menu1Item3.addActionListener(e -> menu1Item3ActionPerformed(e));
                 menu1.add(menu1Item3);
 
                 //---- menu1Item4 ----
                 menu1Item4.setText("\u4fee\u6539");
                 menu1Item4.setIcon(new ImageIcon(getClass().getResource("/icon/change.png")));
                 menu1Item4.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+                menu1Item4.addActionListener(e -> menu1Item4ActionPerformed(e));
                 menu1.add(menu1Item4);
             }
             menuBar1.add(menu1);
@@ -224,12 +233,12 @@ public class Main extends JFrame {
 
         //======== panel1 ========
         {
-            panel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border. EmptyBorder
-            ( 0, 0, 0, 0) , "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn", javax. swing. border. TitledBorder. CENTER, javax. swing. border
-            . TitledBorder. BOTTOM, new java .awt .Font ("Dia\u006cog" ,java .awt .Font .BOLD ,12 ), java. awt
-            . Color. red) ,panel1. getBorder( )) ); panel1. addPropertyChangeListener (new java. beans. PropertyChangeListener( ){ @Override public void
-            propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062ord\u0065r" .equals (e .getPropertyName () )) throw new RuntimeException( )
-            ; }} );
+            panel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
+            . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax
+            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,
+            12 ), java. awt. Color. red) ,panel1. getBorder( )) ); panel1. addPropertyChangeListener (new java. beans
+            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .
+            getPropertyName () )) throw new RuntimeException( ); }} );
             panel1.setLayout(new BorderLayout());
 
             //======== scrollPane1 ========
@@ -237,7 +246,7 @@ public class Main extends JFrame {
                 scrollPane1.setBorder(new EmptyBorder(5, 0, 0, 0));
 
                 //---- table1 ----
-                table1.setBorder(new EmptyBorder(5, 0, 0, 0));
+                table1.setBorder(new EmptyBorder(5, 10, 10, 10));
                 table1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
                 table1.setPreferredSize(null);
                 set_table(str_s);
@@ -251,6 +260,7 @@ public class Main extends JFrame {
                     cm.getColumn(5).setResizable(false);
                     cm.getColumn(6).setResizable(false);
                 }
+                table1.setSurrendersFocusOnKeystroke(true);
                 scrollPane1.setViewportView(table1);
             }
             panel1.add(scrollPane1, BorderLayout.CENTER);

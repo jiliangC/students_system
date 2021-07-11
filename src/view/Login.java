@@ -1,7 +1,7 @@
 
 package view;
 
-import main_information.Str_information;
+import main_information.Login_go;
 import java.awt.*;
 import java.util.Objects;
 import javax.swing.*;
@@ -22,32 +22,13 @@ public class Login extends JFrame {
     private void button1ActionPerformed() {
         String username = Username.getText();
         String password = String.valueOf(Password.getPassword());
-        if (username.equals("1") && password.equals("1")) {
-
-            Str_information strInformation = new Str_information();
-            String[] a ={"2007310421","chen","nan","67","76","87","57"};
-            strInformation.set_s(a);
-
-
-//            Str_information strInformation = new Str_information();
-//            String[][] ss= strInformation.get_str();
-//            int i = ss.length;
-//            System.out.println(i);
-//            ss[0]=new String[]{"ff22","33","44","55","66","77","88"};
-//            strInformation.set_str(ss);
-
-
-            System.out.println("登录成功");
-            dispose();//关闭窗口
-
-            new Main();
-            //下一个窗口
-        } else if (username.trim().length() == 0 || password.trim().length() == 0) {
-            JOptionPane.showMessageDialog(null, "用户名或密码不能为空");
-        } else {
-            JOptionPane.showMessageDialog(null, "用户名或密码不正确");
+        Login_go login_go=new Login_go(username,password);
+        int judge = login_go.go();
+        if (judge==2){
             Username.setText("");
             Password.setText("");
+        } else if (judge==0){
+            dispose();
         }
         // 登录事件
     }

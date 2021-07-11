@@ -1,10 +1,8 @@
 package view;
 
-import main_information.Str_information;
-
+import main_information.AddStudents;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 import javax.swing.*;
 
 
@@ -18,15 +16,7 @@ public class Addstuden extends JFrame {
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
-    //判断字符串是否为数字
-    private static boolean isNumeric(String str) {
-        for (int i = str.length(); --i >= 0; ) {
-            if (!Character.isDigit(str.charAt(i))) {
-                return false;
-            }
-        }
-        return true;
-    }
+
     //登录按钮事件
     private void button1ActionPerformed(ActionEvent e) {
         int judge =0;
@@ -36,40 +26,9 @@ public class Addstuden extends JFrame {
         String chinese = Chinese.getText();
         String math = Maths.getText();
         String english = English.getText();
-
-        Str_information strInformation = new Str_information();
-        ArrayList<String[]> strings = strInformation.get_s();
-        for (String[] strings1:strings){
-            if (strings1[0].equals(number)){
-                judge=1;
-            }
-        }
-
-
-        if (name.equals("") || chinese.equals("") || math.equals("") || english.equals("")) {
-            JOptionPane.showMessageDialog(null, "不能留空");
-        } else if (!isNumeric(number) || number.length() != 10) {
-            JOptionPane.showMessageDialog(null, "学号格式不正确");
-        } else if (!isNumeric(chinese) || chinese.length() >= 4) {
-            JOptionPane.showMessageDialog(null, "语文成绩格式不正确");
-        } else if (!isNumeric(math) || math.length() >= 4) {
-            JOptionPane.showMessageDialog(null, "数学成绩格式不正确");
-        } else if (!isNumeric(english) || english.length() >= 4) {
-            JOptionPane.showMessageDialog(null, "英语成绩格式不正确");
-        } else if (judge==1){
-            JOptionPane.showMessageDialog(null,"学号已经存在");
-        }
-        else {
-            int ch = Integer.parseInt(chinese);
-            int ma = Integer.parseInt(math);
-            int en = Integer.parseInt(english);
-            String info = "已添加\n" + "姓名 " + name + "\n" + "学号 " + number + "\n" + "性别 " + sex + "\n" + "语文 " + chinese + "  " + "数学 " + math + "  " + "英语 " + english;
-            JOptionPane.showMessageDialog(null, info);
-            String[] a ={number,name,sex,chinese,math,english,String.valueOf(ch+ma+en)};
-            strInformation.set_s(a);
+        AddStudents addStudents = new AddStudents(number,name,sex,chinese,math,english);
+        if (addStudents.j()==1){ //输入的格式正确
             dispose();
-
-            // TODO add your code 添加的事件
         }
 
     }
