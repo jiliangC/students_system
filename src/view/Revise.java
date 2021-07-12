@@ -11,6 +11,8 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import javax.swing.*;
+import javax.swing.event.TableModelEvent;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.*;
 
 /**
@@ -28,21 +30,22 @@ public class Revise extends JFrame {
     }
 
     private void set_table(String[][] str_s) {
-
         DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();//单元格渲染器
         tcr.setHorizontalAlignment(JLabel.CENTER);//居中显示
         table1.setDefaultRenderer(Object.class, tcr);//设置渲染器
-
-
-        JTableHeader jTableHeader = table1.getTableHeader();// 获取表头
         table1.setRowHeight(20); //设置行高
-
         table1.setModel(new DefaultTableModel(
                 str_s,
                 new String[]{
-                        "\u5b66\u53f7", "\u59d3\u540d", "\u6027\u522b", "\u8bed\u6587", "\u6570\u5b66", "\u82f1\u8bed", "\u603b\u5206"
-                }
-        ));
+                        "\u5b66\u53f7", "\u59d3\u540d", "\u6027\u522b", "\u8bed\u6587", "\u6570\u5b66", "\u82f1\u8bed","总分"
+                }) {
+            boolean[] columnEditable = new boolean[] {
+                    true, true, true, true, true, true,true};
+            @Override
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return columnEditable[columnIndex];
+            }
+        });
     }
 
     Revise_things revise_things =new Revise_things();
@@ -56,23 +59,28 @@ public class Revise extends JFrame {
         // TODO add your code here
     }
 
+    private void change(){
+        int index= table1.getSelectedRow();
+        String[] new_information = new String[7];
+        for (int i=0;i<7;i++){
+            new_information[i] = table1.getValueAt(index,i).toString();
+        }
+        int k = revise_things.set_information(new_information,index);
+        if (k==1){
+            JOptionPane.showMessageDialog(null,"学生信息修改成功");
+        }
+        System.out.println(Arrays.toString(new_information));
+    }
     private void button2ActionPerformed(ActionEvent e) {
         if (table1.getCellEditor()!=null) {
             table1.getCellEditor().stopCellEditing();
-            int index= table1.getSelectedRow();
-            String[] new_information = new String[7];
-            for (int i=0;i<7;i++){
-                new_information[i] = table1.getValueAt(index,i).toString();
-            }
-            int k = revise_things.set_information(new_information);
-            if (k==1){
-                JOptionPane.showMessageDialog(null,"学生信息修改成功");
-            }
-            System.out.println(Arrays.toString(new_information));
         }
 
+        change();
         // TODO add your code here
     }
+
+
 
     private void initComponents() {
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents

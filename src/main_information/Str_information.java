@@ -18,6 +18,10 @@ public class Str_information {
         Str_information.str_a=strings;
         write_to_file(str_a);
     }
+    public void modify(int index,String[] strings){
+        Str_information.str_a.set(index,strings);
+        write_to_file(str_a);
+    }
 
     //将数组写入文本
     private void write_to_file(ArrayList<String[]> strings) {

@@ -18,24 +18,24 @@ public class Search_go {
                     result.add(string);
                     i++;
                 }
-                if (i==0) JOptionPane.showMessageDialog(null,"没有找到该生信息");
             }
+            if (i==0) JOptionPane.showMessageDialog(null,"没有找到该生信息");
         }else if (a==0&&b!=0){ //只有名字
             for (String[] string : strings) {
                 if (string[1].equals(name)) {
                     result.add(string);
                     i++;
                 }
-                if (i==0) JOptionPane.showMessageDialog(null,"没有找到该生信息");
             }
+            if (i==0) JOptionPane.showMessageDialog(null,"没有找到该生信息");
         }else{ //名字和学号
             for (String[] string : strings){
                 if (string[0].equals(number)&&string[1].equals(name)){
                     result.add(string);
                     i++;
                 }
-                if (i==0) JOptionPane.showMessageDialog(null,"没有找到该生信息");
             }
+            if (i==0) JOptionPane.showMessageDialog(null,"没有找到该生信息");
         }
         return result;
     }

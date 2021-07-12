@@ -134,9 +134,9 @@ public class Search extends JFrame {
         button1.setFont(new Font("\u5b8b\u4f53", Font.BOLD, 12));
         button1.addActionListener(e -> button1ActionPerformed(e));
         contentPane.add(button1);
-        button1.setBounds(530, 20, button1.getPreferredSize().width, 25);
+        button1.setBounds(530, 20, 60, 25);
 
-        contentPane.setPreferredSize(new Dimension(615, 350));
+        contentPane.setPreferredSize(new Dimension(620, 315));
         pack();
         setLocationRelativeTo(getOwner());
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
