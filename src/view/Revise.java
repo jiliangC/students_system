@@ -9,6 +9,7 @@ import main_information.Revise_things;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javax.swing.*;
 import javax.swing.table.*;
 
@@ -44,9 +45,10 @@ public class Revise extends JFrame {
         ));
     }
 
+    Revise_things revise_things =new Revise_things();
+
     private void button1ActionPerformed(ActionEvent e) {
         String number = textField1.getText();
-        Revise_things revise_things =new Revise_things();
         ArrayList<String[]> strings=revise_things.search(number);
         String[][] str_s = strings.toArray(new String[0][0]);
         set_table(str_s);
@@ -55,6 +57,19 @@ public class Revise extends JFrame {
     }
 
     private void button2ActionPerformed(ActionEvent e) {
+        if (table1.getCellEditor()!=null) {
+            table1.getCellEditor().stopCellEditing();
+            int index= table1.getSelectedRow();
+            String[] new_information = new String[7];
+            for (int i=0;i<7;i++){
+                new_information[i] = table1.getValueAt(index,i).toString();
+            }
+            int k = revise_things.set_information(new_information);
+            if (k==1){
+                JOptionPane.showMessageDialog(null,"学生信息修改成功");
+            }
+            System.out.println(Arrays.toString(new_information));
+        }
 
         // TODO add your code here
     }
@@ -100,6 +115,16 @@ public class Revise extends JFrame {
                     "\u5b66\u53f7", "\u59d3\u540d", "\u6027\u522b", "\u8bed\u6587", "\u6570\u5b66", "\u82f1\u8bed", "\u603b\u5206"
                 }
             ));
+            {
+                TableColumnModel cm = table1.getColumnModel();
+                cm.getColumn(0).setResizable(false);
+                cm.getColumn(1).setResizable(false);
+                cm.getColumn(2).setResizable(false);
+                cm.getColumn(3).setResizable(false);
+                cm.getColumn(4).setResizable(false);
+                cm.getColumn(5).setResizable(false);
+                cm.getColumn(6).setResizable(false);
+            }
             scrollPane1.setViewportView(table1);
         }
         contentPane.add(scrollPane1);
