@@ -10,8 +10,7 @@ public class Login_go {
     public int go(){
         if (username.equals("1") && password.equals("1")) {
             Str_information strInformation = new Str_information();
-            String[] a ={"2007310421","chen","nan","67","76","87","57"};
-            strInformation.set_s(a);
+            strInformation.read_from_file();
             System.out.println("登录成功");
             new Main();
             return 0;
