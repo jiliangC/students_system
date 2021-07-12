@@ -10,6 +10,7 @@ import main_information.Str_information;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.Objects;
 import javax.swing.*;
 import javax.swing.table.*;
 
@@ -25,6 +26,8 @@ public class Search extends JFrame {
         setVisible(true);
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setResizable(false);
+        setIconImage(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/students.png"))).getImage());
     }
 
     private void set_table(String[][] str_s) {

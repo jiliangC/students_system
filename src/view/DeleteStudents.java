@@ -9,6 +9,7 @@ import main_information.Str_information;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.util.Objects;
 import javax.swing.*;
 
 /**
@@ -21,6 +22,8 @@ public class DeleteStudents extends JFrame {
         setTitle("删除学生信息");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         initComponents();
+        setResizable(false);
+        setIconImage(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/students.png"))).getImage());
     }
 
     private void deleteActionPerformed(ActionEvent e) {

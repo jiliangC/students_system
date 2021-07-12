@@ -3,6 +3,7 @@ package view;
 import main_information.AddStudents;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Objects;
 import javax.swing.*;
 
 
@@ -15,6 +16,8 @@ public class Addstuden extends JFrame {
         setVisible(true);
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        setResizable(false);
+        setIconImage(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/students.png"))).getImage());
     }
 
     //登录按钮事件

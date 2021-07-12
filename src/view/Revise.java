@@ -10,6 +10,7 @@ import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Objects;
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
 import javax.swing.event.TableModelListener;
@@ -27,6 +28,8 @@ public class Revise extends JFrame {
         setTitle("修改学生信息");
         setVisible(true);
         initComponents();
+        setResizable(false);
+        setIconImage(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/students.png"))).getImage());
     }
 
     private void set_table(String[][] str_s) {

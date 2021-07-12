@@ -8,6 +8,7 @@ import main_information.Str_information;
 import java.util.ArrayList;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.Objects;
 import javax.swing.*;
 import javax.swing.border.*;
 import javax.swing.table.*;
@@ -27,6 +28,7 @@ public class Main extends JFrame {
         setVisible(true);
         initComponents();
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setIconImage(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/students.png"))).getImage());
     }
 
     private void menu1Item1ActionPerformed(ActionEvent e) { //增加
@@ -44,16 +46,10 @@ public class Main extends JFrame {
     }
     //设置表格
     public void set_table(String[][] str_s) {
-
         DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();//单元格渲染器
         tcr.setHorizontalAlignment(JLabel.CENTER);//居中显示
         table1.setDefaultRenderer(Object.class, tcr);//设置渲染器
-
-
-        JTableHeader jTableHeader = table1.getTableHeader();// 获取表头
-        //jTableHeader.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 12));
         table1.setRowHeight(20); //设置行高
-
         table1.setModel(new DefaultTableModel(
                 str_s,
                 new String[]{
@@ -66,7 +62,6 @@ public class Main extends JFrame {
             boolean[] columnEditable = new boolean[]{
                     false, false, false, false, false, false, false
             };
-
             @Override
             public Class<?> getColumnClass(int columnIndex) {
                 return columnTypes[columnIndex];
@@ -77,6 +72,16 @@ public class Main extends JFrame {
                 return columnEditable[columnIndex];
             }
         });
+        {
+            TableColumnModel cm = table1.getColumnModel();
+            cm.getColumn(0).setResizable(false);
+            cm.getColumn(1).setResizable(false);
+            cm.getColumn(2).setResizable(false);
+            cm.getColumn(3).setResizable(false);
+            cm.getColumn(4).setResizable(false);
+            cm.getColumn(5).setResizable(false);
+            cm.getColumn(6).setResizable(false);
+        }
     }
 
     private void menu1Item2ActionPerformed(ActionEvent e) {
@@ -124,6 +129,7 @@ public class Main extends JFrame {
         //======== this ========
         setForeground(SystemColor.menu);
         setFont(new Font(Font.DIALOG, Font.PLAIN, 13));
+        setIconImage(new ImageIcon(getClass().getResource("/icon/students.png")).getImage());
         var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
@@ -181,16 +187,19 @@ public class Main extends JFrame {
                 //---- menuItem2 ----
                 menuItem2.setText("\u5bfc\u5165\u5b66\u751f\u4fe1\u606f");
                 menuItem2.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+                menuItem2.setIcon(new ImageIcon(getClass().getResource("/icon/import.png")));
                 menu2.add(menuItem2);
 
                 //---- menuItem3 ----
                 menuItem3.setText("\u5bfc\u51fa\u5b66\u751f\u6210\u7ee9");
                 menuItem3.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+                menuItem3.setIcon(new ImageIcon(getClass().getResource("/icon/export.png")));
                 menu2.add(menuItem3);
 
                 //---- menuItem4 ----
                 menuItem4.setText("\u5bfc\u51fa\u5b66\u751f\u4fe1\u606f");
                 menuItem4.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+                menuItem4.setIcon(new ImageIcon(getClass().getResource("/icon/export.png")));
                 menu2.add(menuItem4);
             }
             menuBar1.add(menu2);
@@ -205,11 +214,13 @@ public class Main extends JFrame {
                 //---- menuItem5 ----
                 menuItem5.setText("\u5e2e\u52a9");
                 menuItem5.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+                menuItem5.setIcon(new ImageIcon(getClass().getResource("/icon/help.png")));
                 menu3.add(menuItem5);
 
                 //---- menuItem6 ----
                 menuItem6.setText("\u5173\u4e8e");
                 menuItem6.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+                menuItem6.setIcon(new ImageIcon(getClass().getResource("/icon/about.png")));
                 menu3.add(menuItem6);
             }
             menuBar1.add(menu3);
@@ -224,6 +235,7 @@ public class Main extends JFrame {
                 button1.setText("\u5237\u65b0");
                 button1.setOpaque(true);
                 button1.setFont(new Font("sansserif", Font.BOLD, 10));
+                button1.setIcon(null);
                 button1.addActionListener(e -> button1ActionPerformed(e));
                 panel2.add(button1);
             }
@@ -233,12 +245,12 @@ public class Main extends JFrame {
 
         //======== panel1 ========
         {
-            panel1.setBorder (new javax. swing. border. CompoundBorder( new javax .swing .border .TitledBorder (new javax. swing. border
-            . EmptyBorder( 0, 0, 0, 0) , "JF\u006frmDes\u0069gner \u0045valua\u0074ion", javax. swing. border. TitledBorder. CENTER, javax
-            . swing. border. TitledBorder. BOTTOM, new java .awt .Font ("D\u0069alog" ,java .awt .Font .BOLD ,
-            12 ), java. awt. Color. red) ,panel1. getBorder( )) ); panel1. addPropertyChangeListener (new java. beans
-            . PropertyChangeListener( ){ @Override public void propertyChange (java .beans .PropertyChangeEvent e) {if ("\u0062order" .equals (e .
-            getPropertyName () )) throw new RuntimeException( ); }} );
+            panel1.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border
+            .EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax
+            .swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,
+            12),java.awt.Color.red),panel1. getBorder()));panel1. addPropertyChangeListener(new java.beans
+            .PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.
+            getPropertyName()))throw new RuntimeException();}});
             panel1.setLayout(new BorderLayout());
 
             //======== scrollPane1 ========
@@ -250,16 +262,6 @@ public class Main extends JFrame {
                 table1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
                 table1.setPreferredSize(null);
                 set_table(str_s);
-                {
-                    TableColumnModel cm = table1.getColumnModel();
-                    cm.getColumn(0).setResizable(false);
-                    cm.getColumn(1).setResizable(false);
-                    cm.getColumn(2).setResizable(false);
-                    cm.getColumn(3).setResizable(false);
-                    cm.getColumn(4).setResizable(false);
-                    cm.getColumn(5).setResizable(false);
-                    cm.getColumn(6).setResizable(false);
-                }
                 table1.setSurrendersFocusOnKeystroke(true);
                 scrollPane1.setViewportView(table1);
             }

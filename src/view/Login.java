@@ -17,6 +17,9 @@ public class Login extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         initComponents();
+        setResizable(false);
+        setTitle("登录");
+        setIconImage(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/students.png"))).getImage());
     }
 
     private void button1ActionPerformed() {
@@ -71,8 +74,8 @@ public class Login extends JFrame {
             logo.setBounds(150, 145, 210, 25);
 
             //---- label1 ----
-
-            label1.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/login.png"))));
+            Image img = new ImageIcon("src/icon/login.png").getImage();
+            label1.setIcon(new ImageIcon(img));
             panel1.add(label1);
             label1.setBounds(35, 75, 95, 95);
             panel1.add(Password);
