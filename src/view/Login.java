@@ -1,10 +1,12 @@
 
 package view;
 
+import main_information.File_information;
 import main_information.Login_go;
 import main_information.Str_information;
 
 import java.awt.*;
+import java.io.File;
 import java.util.Objects;
 import javax.swing.*;
 
@@ -25,8 +27,8 @@ public class Login extends JFrame {
     }
 
     private void button1ActionPerformed() {
-        Str_information str_information =new Str_information();
-        str_information.create_file();
+        File_information file_information = new File_information();
+        file_information.create_file(new File("src/students_info"));
         String username = Username.getText();
         String password = String.valueOf(Password.getPassword());
         Login_go login_go=new Login_go(username,password);

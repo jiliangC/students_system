@@ -8,6 +8,8 @@ public class Str_information {
     ArrayList<String[]> str_a = new ArrayList<>();
     File file = new File("src/students_info");
 
+
+
     public ArrayList<String[]> get_s() {
         return Str_information.str_a;
     }
@@ -52,6 +54,9 @@ public class Str_information {
         }
     }
 
+    //将数组写入文本
+
+
     //将文本写入数组
     public void read_from_file() {
         BufferedReader bufferedReader;
@@ -70,15 +75,5 @@ public class Str_information {
         }
     }
 
-    public void create_file() { //如果不存在则创建文件
-        if (!file.exists()) {
-            try {
-                if (file.createNewFile()) {
-                    System.out.println("文件创建成功");
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+
 }

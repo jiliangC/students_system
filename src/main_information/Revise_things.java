@@ -4,8 +4,8 @@ import javax.swing.*;
 import java.util.ArrayList;
 
 public class Revise_things {
-    int i; //存在i个学号相同
-    int k;
+    static int i; //存在i个学号相同
+    static int k;
     JTable table1;
     Str_information str_information = new Str_information();
     ArrayList<String[]> strings = str_information.get_s();
@@ -26,24 +26,16 @@ public class Revise_things {
                 }
             }
             if (i==0) JOptionPane.showMessageDialog(null,"没有找到该生信息");
-            this.i=i;
+            Revise_things.i =i;
         }
         return result;
     }
 
     public int set_information(String[] str_list,int index){
-        System.out.println(this.k+index);
-        str_information.modify(this.k+index,str_list);
-        System.out.println(this.k+index);
+        System.out.println(k+index);
+        str_information.modify(k+index,str_list);
+        System.out.println(k+index);
         return 1;
-    }
-
-    public void set_Table(String[][] str_s){
-        new Set_Table(table1,str_s);
-    }
-
-    public Revise_things(){
-
     }
 
 }

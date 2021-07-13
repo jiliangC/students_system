@@ -4,6 +4,8 @@
 
 package view;
 
+import javax.swing.table.*;
+import main_information.File_information;
 import main_information.Set_Table;
 import main_information.Str_information;
 import java.util.ArrayList;
@@ -12,7 +14,6 @@ import java.awt.event.*;
 import java.util.Objects;
 import javax.swing.*;
 import javax.swing.border.*;
-import javax.swing.table.*;
 
 /**
  * @author cjl
@@ -41,7 +42,7 @@ public class Main extends JFrame {
         Str_information strInformation = new Str_information();
         ArrayList<String[]> str_sa = strInformation.get_s();
         String[][] str_s = str_sa.toArray(new String[0][0]);
-        new Set_Table(table1,str_s);
+        new Set_Table(table1,str_s,0);
 
         // TODO add your code here
     }
@@ -62,14 +63,24 @@ public class Main extends JFrame {
         // TODO add your code here
     }
     
-    File_Chooser file_Chooser = new File_Chooser();
+    File_information file_information = new File_information();//导入学生信息 bug太多暂时不写
     private void menuItem2ActionPerformed(ActionEvent e) {
-        file_Chooser.showFileOpenDialog();
+        //file_information.showFileOpenDialog();
         // TODO add your code here
     }
 
-    private void menuItem3ActionPerformed(ActionEvent e) {
-        file_Chooser.showFileSaveDialog();
+    private void menuItem3ActionPerformed(ActionEvent e) { //导出学生信息
+        file_information.showFileSaveDialog();
+        // TODO add your code here
+    }
+
+    private void menuItem5ActionPerformed(ActionEvent e) {
+        new Help();
+        // TODO add your code here
+    }
+
+    private void menuItem6ActionPerformed(ActionEvent e) {
+        new About();
         // TODO add your code here
     }
 
@@ -90,7 +101,6 @@ public class Main extends JFrame {
         menu2 = new JMenu();
         menuItem2 = new JMenuItem();
         menuItem3 = new JMenuItem();
-        menuItem4 = new JMenuItem();
         menu3 = new JMenu();
         menuItem5 = new JMenuItem();
         menuItem6 = new JMenuItem();
@@ -153,7 +163,7 @@ public class Main extends JFrame {
 
             //======== menu2 ========
             {
-                menu2.setText("\u5bfc\u5165\u5bfc\u51fa");
+                menu2.setText("\u5bfc\u51fa\u4fe1\u606f");
                 menu2.setMinimumSize(null);
                 menu2.setIcon(null);
                 menu2.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
@@ -162,21 +172,16 @@ public class Main extends JFrame {
                 menuItem2.setText("\u5bfc\u5165\u5b66\u751f\u4fe1\u606f");
                 menuItem2.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
                 menuItem2.setIcon(new ImageIcon(getClass().getResource("/icon/import.png")));
+                menuItem2.setVisible(false);
                 menuItem2.addActionListener(e -> menuItem2ActionPerformed(e));
                 menu2.add(menuItem2);
 
                 //---- menuItem3 ----
-                menuItem3.setText("\u5bfc\u51fa\u5b66\u751f\u6210\u7ee9");
+                menuItem3.setText("\u5bfc\u51fa\u5b66\u751f\u4fe1\u606f");
                 menuItem3.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
                 menuItem3.setIcon(new ImageIcon(getClass().getResource("/icon/export.png")));
                 menuItem3.addActionListener(e -> menuItem3ActionPerformed(e));
                 menu2.add(menuItem3);
-
-                //---- menuItem4 ----
-                menuItem4.setText("\u5bfc\u51fa\u5b66\u751f\u4fe1\u606f");
-                menuItem4.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
-                menuItem4.setIcon(new ImageIcon(getClass().getResource("/icon/export.png")));
-                menu2.add(menuItem4);
             }
             menuBar1.add(menu2);
 
@@ -191,12 +196,14 @@ public class Main extends JFrame {
                 menuItem5.setText("\u5e2e\u52a9");
                 menuItem5.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
                 menuItem5.setIcon(new ImageIcon(getClass().getResource("/icon/help.png")));
+                menuItem5.addActionListener(e -> menuItem5ActionPerformed(e));
                 menu3.add(menuItem5);
 
                 //---- menuItem6 ----
                 menuItem6.setText("\u5173\u4e8e");
                 menuItem6.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
                 menuItem6.setIcon(new ImageIcon(getClass().getResource("/icon/about.png")));
+                menuItem6.addActionListener(e -> menuItem6ActionPerformed(e));
                 menu3.add(menuItem6);
             }
             menuBar1.add(menu3);
@@ -221,23 +228,17 @@ public class Main extends JFrame {
 
         //======== panel1 ========
         {
-            panel1.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border
-            .EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER,javax
-            .swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,
-            12),java.awt.Color.red),panel1. getBorder()));panel1. addPropertyChangeListener(new java.beans
-            .PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.
-            getPropertyName()))throw new RuntimeException();}});
             panel1.setLayout(new BorderLayout());
 
             //======== scrollPane1 ========
             {
                 scrollPane1.setBorder(new EmptyBorder(5, 0, 0, 0));
+
                 //---- table1 ----
                 table1.setBorder(new EmptyBorder(5, 10, 10, 10));
                 table1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
                 table1.setPreferredSize(null);
-                new Set_Table(table1,str_s);
-
+                new Set_Table(table1,str_s,0);
                 table1.setSurrendersFocusOnKeystroke(true);
                 scrollPane1.setViewportView(table1);
             }
@@ -249,9 +250,6 @@ public class Main extends JFrame {
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
         button1.setContentAreaFilled(false);
-
-
-
     }
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
@@ -265,7 +263,6 @@ public class Main extends JFrame {
     private JMenu menu2;
     private JMenuItem menuItem2;
     private JMenuItem menuItem3;
-    private JMenuItem menuItem4;
     private JMenu menu3;
     private JMenuItem menuItem5;
     private JMenuItem menuItem6;

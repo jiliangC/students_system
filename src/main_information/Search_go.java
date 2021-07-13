@@ -45,7 +45,7 @@ public class Search_go {
     }
 
     public void set_Table(String[][] str_s){
-        new Set_Table(table1,str_s);
+        new Set_Table(table1,str_s,0);
     }
 
     public Search_go(JTable jTable){
