@@ -6,6 +6,7 @@ import java.util.ArrayList;
 public class Revise_things {
     int i; //存在i个学号相同
     int k;
+    JTable table1;
     Str_information str_information = new Str_information();
     ArrayList<String[]> strings = str_information.get_s();
 
@@ -33,6 +34,16 @@ public class Revise_things {
     public int set_information(String[] str_list,int index){
         System.out.println(this.k+index);
         str_information.modify(this.k+index,str_list);
+        System.out.println(this.k+index);
         return 1;
     }
+
+    public void set_Table(String[][] str_s){
+        new Set_Table(table1,str_s);
+    }
+
+    public Revise_things(){
+
+    }
+
 }

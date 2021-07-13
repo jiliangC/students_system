@@ -4,6 +4,7 @@
 
 package view;
 
+import main_information.Set_Table;
 import main_information.Str_information;
 import java.util.ArrayList;
 import java.awt.*;
@@ -40,49 +41,11 @@ public class Main extends JFrame {
         Str_information strInformation = new Str_information();
         ArrayList<String[]> str_sa = strInformation.get_s();
         String[][] str_s = str_sa.toArray(new String[0][0]);
-        set_table(str_s);
+        new Set_Table(table1,str_s);
 
         // TODO add your code here
     }
-    //设置表格
-    public void set_table(String[][] str_s) {
-        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();//单元格渲染器
-        tcr.setHorizontalAlignment(JLabel.CENTER);//居中显示
-        table1.setDefaultRenderer(Object.class, tcr);//设置渲染器
-        table1.setRowHeight(20); //设置行高
-        table1.setModel(new DefaultTableModel(
-                str_s,
-                new String[]{
-                        "\u5b66\u53f7", "\u59d3\u540d", "\u6027\u522b", "\u8bed\u6587", "\u6570\u5b66", "\u82f1\u8bed", "\u603b\u5206"
-                }
-        ) {
-            Class<?>[] columnTypes = new Class<?>[]{
-                    String.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class
-            };
-            boolean[] columnEditable = new boolean[]{
-                    false, false, false, false, false, false, false
-            };
-            @Override
-            public Class<?> getColumnClass(int columnIndex) {
-                return columnTypes[columnIndex];
-            }
 
-            @Override
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return columnEditable[columnIndex];
-            }
-        });
-        {
-            TableColumnModel cm = table1.getColumnModel();
-            cm.getColumn(0).setResizable(false);
-            cm.getColumn(1).setResizable(false);
-            cm.getColumn(2).setResizable(false);
-            cm.getColumn(3).setResizable(false);
-            cm.getColumn(4).setResizable(false);
-            cm.getColumn(5).setResizable(false);
-            cm.getColumn(6).setResizable(false);
-        }
-    }
 
     private void menu1Item2ActionPerformed(ActionEvent e) {
         new DeleteStudents();
@@ -96,6 +59,17 @@ public class Main extends JFrame {
 
     private void menu1Item4ActionPerformed(ActionEvent e) {
         new Revise();
+        // TODO add your code here
+    }
+    
+    File_Chooser file_Chooser = new File_Chooser();
+    private void menuItem2ActionPerformed(ActionEvent e) {
+        file_Chooser.showFileOpenDialog();
+        // TODO add your code here
+    }
+
+    private void menuItem3ActionPerformed(ActionEvent e) {
+        file_Chooser.showFileSaveDialog();
         // TODO add your code here
     }
 
@@ -188,12 +162,14 @@ public class Main extends JFrame {
                 menuItem2.setText("\u5bfc\u5165\u5b66\u751f\u4fe1\u606f");
                 menuItem2.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
                 menuItem2.setIcon(new ImageIcon(getClass().getResource("/icon/import.png")));
+                menuItem2.addActionListener(e -> menuItem2ActionPerformed(e));
                 menu2.add(menuItem2);
 
                 //---- menuItem3 ----
                 menuItem3.setText("\u5bfc\u51fa\u5b66\u751f\u6210\u7ee9");
                 menuItem3.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
                 menuItem3.setIcon(new ImageIcon(getClass().getResource("/icon/export.png")));
+                menuItem3.addActionListener(e -> menuItem3ActionPerformed(e));
                 menu2.add(menuItem3);
 
                 //---- menuItem4 ----
@@ -246,22 +222,22 @@ public class Main extends JFrame {
         //======== panel1 ========
         {
             panel1.setBorder(new javax.swing.border.CompoundBorder(new javax.swing.border.TitledBorder(new javax.swing.border
-            .EmptyBorder(0,0,0,0), "JFor\u006dDesi\u0067ner \u0045valu\u0061tion",javax.swing.border.TitledBorder.CENTER,javax
+            .EmptyBorder(0,0,0,0), "JF\u006frmD\u0065sig\u006eer \u0045val\u0075ati\u006fn",javax.swing.border.TitledBorder.CENTER,javax
             .swing.border.TitledBorder.BOTTOM,new java.awt.Font("Dia\u006cog",java.awt.Font.BOLD,
             12),java.awt.Color.red),panel1. getBorder()));panel1. addPropertyChangeListener(new java.beans
-            .PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("bord\u0065r".equals(e.
+            .PropertyChangeListener(){@Override public void propertyChange(java.beans.PropertyChangeEvent e){if("\u0062ord\u0065r".equals(e.
             getPropertyName()))throw new RuntimeException();}});
             panel1.setLayout(new BorderLayout());
 
             //======== scrollPane1 ========
             {
                 scrollPane1.setBorder(new EmptyBorder(5, 0, 0, 0));
-
                 //---- table1 ----
                 table1.setBorder(new EmptyBorder(5, 10, 10, 10));
                 table1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
                 table1.setPreferredSize(null);
-                set_table(str_s);
+                new Set_Table(table1,str_s);
+
                 table1.setSurrendersFocusOnKeystroke(true);
                 scrollPane1.setViewportView(table1);
             }
@@ -271,7 +247,6 @@ public class Main extends JFrame {
         setSize(710, 440);
         setLocationRelativeTo(null);
         // JFormDesigner - End of component initialization  //GEN-END:initComponents
-
 
         button1.setContentAreaFilled(false);
 

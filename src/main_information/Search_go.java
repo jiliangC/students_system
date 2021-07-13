@@ -1,9 +1,13 @@
 package main_information;
 
 import javax.swing.*;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.JTableHeader;
 import java.util.ArrayList;
 
 public class Search_go {
+    private JTable table1;
 
     public  ArrayList<String[]> get_result(String number,  String name){
         Str_information str_information = new Str_information();
@@ -40,4 +44,11 @@ public class Search_go {
         return result;
     }
 
+    public void set_Table(String[][] str_s){
+        new Set_Table(table1,str_s);
+    }
+
+    public Search_go(JTable jTable){
+        this.table1=jTable;
+    }
 }

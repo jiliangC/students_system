@@ -30,49 +30,14 @@ public class Search extends JFrame {
         setIconImage(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/students.png"))).getImage());
     }
 
-    private void set_table(String[][] str_s) {
-
-        DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();//单元格渲染器
-        tcr.setHorizontalAlignment(JLabel.CENTER);//居中显示
-        table1.setDefaultRenderer(Object.class, tcr);//设置渲染器
-
-
-        JTableHeader jTableHeader = table1.getTableHeader();// 获取表头
-        table1.setRowHeight(20); //设置行高
-
-        table1.setModel(new DefaultTableModel(
-                str_s,
-                new String[]{
-                        "\u5b66\u53f7", "\u59d3\u540d", "\u6027\u522b", "\u8bed\u6587", "\u6570\u5b66", "\u82f1\u8bed", "\u603b\u5206"
-                }
-        ) {
-            Class<?>[] columnTypes = new Class<?>[]{
-                    String.class, Object.class, Object.class, Object.class, Object.class, Object.class, Object.class
-            };
-            boolean[] columnEditable = new boolean[]{
-                    false, false, false, false, false, false, false
-            };
-
-            @Override
-            public Class<?> getColumnClass(int columnIndex) {
-                return columnTypes[columnIndex];
-            }
-
-            @Override
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return columnEditable[columnIndex];
-            }
-        });
-    }
-
 
     private void button1ActionPerformed(ActionEvent e) {
         String number = textField1.getText();
         String name= textField2.getText();
-        Search_go search_go = new Search_go();
+        Search_go search_go = new Search_go(table1);
         ArrayList<String[]> str_result = search_go.get_result(number,name);
         String[][] str_s = str_result.toArray(new String[0][0]);
-        set_table(str_s);
+        search_go.set_Table(str_s);
         // TODO add your code here
     }
 

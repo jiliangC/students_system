@@ -42,7 +42,7 @@ public class Revise extends JFrame {
                 new String[]{
                         "\u5b66\u53f7", "\u59d3\u540d", "\u6027\u522b", "\u8bed\u6587", "\u6570\u5b66", "\u82f1\u8bed","总分"
                 }) {
-            boolean[] columnEditable = new boolean[] {
+            final boolean[] columnEditable = new boolean[] {
                     true, true, true, true, true, true,true};
             @Override
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -52,7 +52,6 @@ public class Revise extends JFrame {
     }
 
     Revise_things revise_things =new Revise_things();
-
     private void button1ActionPerformed(ActionEvent e) {
         String number = textField1.getText();
         ArrayList<String[]> strings=revise_things.search(number);
@@ -62,6 +61,7 @@ public class Revise extends JFrame {
         // TODO add your code here
     }
 
+    //有bug待修改
     private void change(){
         int index= table1.getSelectedRow();
         String[] new_information = new String[7];
@@ -78,7 +78,6 @@ public class Revise extends JFrame {
         if (table1.getCellEditor()!=null) {
             table1.getCellEditor().stopCellEditing();
         }
-
         change();
         // TODO add your code here
     }
@@ -86,6 +85,7 @@ public class Revise extends JFrame {
 
 
     private void initComponents() {
+
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
         // Generated using JFormDesigner Evaluation license - unknown
         label1 = new JLabel();
@@ -157,11 +157,13 @@ public class Revise extends JFrame {
 
     // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
     // Generated using JFormDesigner Evaluation license - unknown
+
     private JLabel label1;
     private JTextField textField1;
     private JButton button1;
     private JScrollPane scrollPane1;
     private JTable table1;
     private JButton button2;
+
     // JFormDesigner - End of variables declaration  //GEN-END:variables
 }
