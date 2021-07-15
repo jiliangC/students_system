@@ -3,12 +3,9 @@
  */
 
 package view;
-
-import javax.swing.table.*;
 import main_information.File_information;
 import main_information.Set_Table;
-import main_information.Str_information;
-import java.util.ArrayList;
+import main_information.String_Function;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Objects;
@@ -39,9 +36,8 @@ public class Main extends JFrame {
     }
 
     private void button1ActionPerformed(ActionEvent e) { //刷新按钮
-        Str_information strInformation = new Str_information();
-        ArrayList<String[]> str_sa = strInformation.get_s();
-        String[][] str_s = str_sa.toArray(new String[0][0]);
+        String_Function string_function = new String_Function();
+        String[][] str_s=string_function.get_s();
         new Set_Table(table1,str_s,0);
 
         // TODO add your code here
@@ -85,9 +81,8 @@ public class Main extends JFrame {
     }
 
     public void initComponents() {
-        Str_information strInformation = new Str_information();
-        ArrayList<String[]> str_sa = strInformation.get_s();
-        String[][] str_s = str_sa.toArray(new String[0][0]);
+        String_Function string_function = new String_Function();
+        String[][] str_s = string_function.get_s();
 
 
         // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents

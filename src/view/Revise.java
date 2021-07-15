@@ -37,14 +37,14 @@ public class Revise extends JFrame {
     Revise_things revise_things = new Revise_things();
     private void button1ActionPerformed(ActionEvent e) {
         String number = textField1.getText();
-        ArrayList<String[]> strings=revise_things.search(number);
-        String[][] str_s = strings.toArray(new String[0][0]);
+        //ArrayList<String[]> strings=revise_things.search(number);
+        //String[][] str_s = strings.toArray(new String[0][0]);
+        String[][] str_s = revise_things.search(number);
         new Set_Table(table1,str_s,1);
 
         // TODO add your code here
     }
-
-    //有bug待修改
+    //here have bug
     private void change(){
         int index= table1.getSelectedRow();
         String[] new_information = new String[7];

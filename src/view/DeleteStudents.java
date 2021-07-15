@@ -3,17 +3,15 @@
  */
 
 package view;
-
-import main_information.Str_information;
+import main_information.String_Function;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 import java.util.Objects;
 import javax.swing.*;
 
 /**
- * @author unknown
+ * @author cjl
  */
 public class DeleteStudents extends JFrame {
     public static void main(String[] args){new DeleteStudents();}
@@ -28,21 +26,18 @@ public class DeleteStudents extends JFrame {
 
     private void deleteActionPerformed(ActionEvent e) {
         String number = textField1.getText();
-
         int index=-1;
-
-        Str_information str_information = new Str_information();
-        ArrayList<String[]> strings = str_information.get_s();
-
-        for (String[] strings1:strings){
-            if (strings1[0].equals(number)){
-                index=strings.indexOf(strings1);
-                int is_delete= JOptionPane.showConfirmDialog(null,"是否删除该学生信息","注意",JOptionPane.YES_NO_OPTION);
-                if (is_delete==JOptionPane.YES_OPTION){ //同意
-                    strings.remove(index);
-                    str_information.replace(strings);
+        String_Function string_function = new String_Function();
+        String[][] strings = string_function.get_s();
+        for (int i=0;i<strings.length;i++){
+            if (strings[i][0].equals(number)){
+                index=1;
+                int is_delete = JOptionPane.showConfirmDialog(null,"是否删除该学生信息","注意",JOptionPane.YES_NO_OPTION);
+                if (is_delete==JOptionPane.YES_OPTION){
+                    string_function.delete(i);
                     dispose();
                 }
+                break;
             }
         }
         if (index==-1){

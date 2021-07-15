@@ -9,8 +9,8 @@ public class Login_go {
 
     public int go(){
         if (username.equals("1") && password.equals("1")) {
-            Str_information str_information = new Str_information();
-            str_information.read_from_file();
+            String_Function string_function = new String_Function();
+            string_function.read_from_file();
             System.out.println("登录成功");
             new Main();
             return 0;

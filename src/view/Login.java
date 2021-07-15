@@ -3,7 +3,6 @@ package view;
 
 import main_information.File_information;
 import main_information.Login_go;
-import main_information.Str_information;
 
 import java.awt.*;
 import java.io.File;

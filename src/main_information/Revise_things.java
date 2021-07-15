@@ -6,22 +6,21 @@ import java.util.ArrayList;
 public class Revise_things {
     static int i; //存在i个学号相同
     static int k;
-    JTable table1;
-    Str_information str_information = new Str_information();
-    ArrayList<String[]> strings = str_information.get_s();
+    String_Function string_function = new String_Function();
+    String[][] strings = string_function.get_s();
 
-    public ArrayList<String[]> search(String number){
+    public String[][] search(String number){
         int i=0;
-        ArrayList<String[]> result =new ArrayList<>();
+        String[][] result = new String[0][7];
         if (number.length()==0){
             JOptionPane.showMessageDialog(null,"学号不能为空");
         }else {
-            for (String[] string : strings) {
-                if (string[0].equals(number)) {
+            for (int j=0;j<strings.length;j++){
+                if (strings[j][0].equals(number)){
                     if (i==0){
-                        k=strings.indexOf(string);
+                        k=j;
                     }
-                    result.add(string);
+                    result= string_function.add(result,strings[j]);
                     i++;
                 }
             }
@@ -33,7 +32,7 @@ public class Revise_things {
 
     public int set_information(String[] str_list,int index){
         System.out.println(k+index);
-        str_information.modify(k+index,str_list);
+        string_function.modify(k+index,str_list);
         System.out.println(k+index);
         return 1;
     }

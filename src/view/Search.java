@@ -5,14 +5,13 @@
 package view;
 
 import main_information.Search_go;
-import main_information.Str_information;
 
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import java.util.Objects;
-import javax.swing.*;
-import javax.swing.table.*;
 
 /**
  * @author unknown
@@ -35,8 +34,10 @@ public class Search extends JFrame {
         String number = textField1.getText();
         String name= textField2.getText();
         Search_go search_go = new Search_go(table1);
-        ArrayList<String[]> str_result = search_go.get_result(number,name);
-        String[][] str_s = str_result.toArray(new String[0][0]);
+
+        //ArrayList<String[]> str_result = search_go.get_result(number,name);
+        //String[][] str_s = str_result.toArray(new String[0][0]);
+        String[][] str_s=search_go.get_result(number,name);
         search_go.set_Table(str_s);
         // TODO add your code here
     }

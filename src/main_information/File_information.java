@@ -3,12 +3,10 @@ package main_information;
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.*;
-import java.util.ArrayList;
 
 
 public class File_information {
-    //File file_main = new File("src/students_info");
-    Str_information str_information = new Str_information();
+    String_Function string_function = new String_Function();
 
     //判断文件是否存在
     public void create_file(File file_main) { //如果不存在则创建文件
@@ -66,14 +64,14 @@ public class File_information {
             // 如果点击了"保存", 则获取选择的保存路径
             File file = fileChooser.getSelectedFile();
             create_file(file);
-            write_to_file(str_information.get_s(),file);
+            write_to_file(string_function.get_s(),file);
             System.out.println(file.getAbsoluteFile());
             //msgTextArea.append("保存到文件: " + file.getAbsolutePath() + "\n\n");
         }
         }
 
     //将数组写入文本
-    public void write_to_file(ArrayList<String[]> strings,File file) {
+    public void write_to_file(String[][] strings,File file) {
         FileWriter out = null;
         try {
             try {

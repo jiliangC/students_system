@@ -1,36 +1,50 @@
 package main_information;
 
 import java.io.*;
-import java.util.ArrayList;
 
-public class Str_information {
+public class String_Function {
     public static
-    ArrayList<String[]> str_a = new ArrayList<>();
+    String[][] str_a = new String[0][7];
     File file = new File("src/students_info");
 
-
-
-    public ArrayList<String[]> get_s() {
-        return Str_information.str_a;
+    public  String[][] add(String[][] str_a,String[] n){
+        String[][] temp = new String[str_a.length+1][7];
+        for (int i=0;i<str_a.length;i++){
+            temp[i]=str_a[i];
+        }
+        temp[str_a.length]=n;
+        return temp;
+    }
+    private String[][] reduce(int index,String[][] str_a){
+        String[][] temp = new String[str_a.length-1][7];
+        int j=0;
+        for (int i=0;i<str_a.length;i++){
+            if (i!=index){
+                temp[j++]=str_a[i];
+            }
+        }
+        return temp;
     }
 
-    public void set_s(String[] strings) {
-        Str_information.str_a.add(strings);
-        write_to_file(str_a);
+    public String[][] get_s(){return String_Function.str_a;}
+    public void set_s(String[] strings){
+        String_Function.str_a=add(String_Function.str_a,strings);
+        write_to_file(String_Function.str_a);
     }
-
-    public void replace(ArrayList<String[]> strings) {
-        Str_information.str_a = strings;
-        write_to_file(str_a);
+    public void replace(String[][] strings){
+        String_Function.str_a=strings;
+        write_to_file(String_Function.str_a);
     }
-
-    public void modify(int index, String[] strings) {
-        Str_information.str_a.set(index, strings);
-        write_to_file(str_a);
+    public void modify(int index,String[] strings){
+        String_Function.str_a[index]=strings;
+        write_to_file(String_Function.str_a);
+    }
+    public void delete(int index){
+        String_Function.str_a=reduce(index,String_Function.str_a);
     }
 
     //将数组写入文本
-    private void write_to_file(ArrayList<String[]> strings) {
+    private void write_to_file(String[][] strings) {
         FileWriter out = null;
         try {
             try {
@@ -53,7 +67,6 @@ public class Str_information {
             e.printStackTrace();
         }
     }
-
     //将文本写入数组
     public void read_from_file() {
         BufferedReader bufferedReader;
@@ -65,12 +78,10 @@ public class Str_information {
             while ((line = bufferedReader.readLine()) != null) {
                 //将按行读取的字符串按空格分割，得到一个string数组
                 String[] strings = line.split("\t");
-                Str_information.str_a.add(strings);
+                String_Function.str_a=add(String_Function.str_a,strings);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
-
-
 }

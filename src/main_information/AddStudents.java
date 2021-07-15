@@ -20,9 +20,11 @@ public class AddStudents {
     }
 
     public AddStudents(String number,String name,String sex,String chinese,String math,String english){
-        Str_information str_information=new Str_information();
+        //Str_information str_information=new Str_information();
+        String_Function string_function = new String_Function();
+
         int judge = 0;
-        for (String[] strings1:str_information.get_s()){
+        for (String[] strings1:string_function.get_s()){
             if (strings1[0].equals(number)) {
                 judge = 1;
                 break;
@@ -51,7 +53,7 @@ public class AddStudents {
                     JOptionPane.showMessageDialog(null, info);
                     String[] a ={number,name,sex,chinese,math,english,String.valueOf(ch+ma+en)};
                     this.i=1;
-                    str_information.set_s(a);}
+                    string_function.set_s(a);}
             else {
                 JOptionPane.showMessageDialog(null,"成绩满分为100");
             }
