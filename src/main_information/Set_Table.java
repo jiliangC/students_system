@@ -11,15 +11,6 @@ class MyCellEditor extends DefaultCellEditor {
     public MyCellEditor(JTextField textField) {
         super(textField);
     }
-
-    public MyCellEditor(JCheckBox checkBox) {
-        super(checkBox);
-    }
-
-    public MyCellEditor(JComboBox comboBox) {
-        super(comboBox);
-    }
-
     @Override
     public boolean stopCellEditing() {
         // 获取当前单元格的编辑器组件
