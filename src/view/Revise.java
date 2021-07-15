@@ -9,7 +9,10 @@ import java.awt.event.*;
 import java.util.Arrays;
 import java.util.Objects;
 import javax.swing.*;
+import javax.swing.event.TableModelListener;
 import javax.swing.table.*;
+import javax.swing.event.TableModelEvent;
+import javax.swing.table.TableModel;
 
 public class Revise extends JFrame {
     JTable table;
@@ -60,6 +63,8 @@ public class Revise extends JFrame {
 
 
 
+
+
     private void initComponents() {
 
         label1 = new JLabel();
@@ -93,12 +98,13 @@ public class Revise extends JFrame {
         {
 
             //---- table1 ----
+
             table1.setModel(new DefaultTableModel(
                 new Object[][] {
                 },
-                new String[] {
-                    "\u5b66\u53f7", "\u59d3\u540d", "\u6027\u522b", "\u8bed\u6587", "\u6570\u5b66", "\u82f1\u8bed", "\u603b\u5206"
-                }
+                    new String[]{
+                            "学号", "姓名", "性别", "语文", "数学", "英语", "总分"
+                    }
             ));
             {
                 TableColumnModel cm = table1.getColumnModel();
