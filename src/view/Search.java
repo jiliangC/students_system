@@ -1,21 +1,12 @@
-/*
- * Created by JFormDesigner on Sun Jul 11 17:00:29 AWST 2021
- */
-
 package view;
 
 import main_information.Search_go;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
 import java.util.Objects;
 
-/**
- * @author unknown
- */
 public class Search extends JFrame {
     public static void main(String[] args) {
         new Search();
@@ -35,8 +26,6 @@ public class Search extends JFrame {
         String name= textField2.getText();
         Search_go search_go = new Search_go(table1);
 
-        //ArrayList<String[]> str_result = search_go.get_result(number,name);
-        //String[][] str_s = str_result.toArray(new String[0][0]);
         String[][] str_s=search_go.get_result(number,name);
         search_go.set_Table(str_s);
         // TODO add your code here
@@ -44,8 +33,6 @@ public class Search extends JFrame {
 
     private void initComponents() {
 
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unknown
         textField1 = new JTextField();
         label1 = new JLabel();
         textField2 = new JTextField();
@@ -108,12 +95,9 @@ public class Search extends JFrame {
         contentPane.setPreferredSize(new Dimension(620, 315));
         pack();
         setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
         button1.setContentAreaFilled(false);
     }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
     private JTextField textField1;
     private JLabel label1;
     private JTextField textField2;
@@ -121,5 +105,4 @@ public class Search extends JFrame {
     private JScrollPane scrollPane1;
     private JTable table1;
     private JButton button1;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

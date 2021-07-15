@@ -8,11 +8,14 @@ import javax.swing.*;
 
 
 public class Addstuden extends JFrame {
+    JTable table;
     public static void main(String[] args) {
-        new Addstuden();
+        new Addstuden(null);
     }
 
-    public Addstuden() { setTitle("增加学生信息");
+    public Addstuden(JTable table1) {
+        this.table=table1;
+        setTitle("增加学生信息");
         setVisible(true);
         initComponents();
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -20,7 +23,7 @@ public class Addstuden extends JFrame {
         setIconImage(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/students.png"))).getImage());
     }
 
-    //登录按钮事件
+    //添加按钮事件
     private void button1ActionPerformed(ActionEvent e) {
         int judge =0;
         String name = Name.getText();
@@ -29,7 +32,7 @@ public class Addstuden extends JFrame {
         String chinese = Chinese.getText();
         String math = Maths.getText();
         String english = English.getText();
-        AddStudents addStudents = new AddStudents(number,name,sex,chinese,math,english);
+        AddStudents addStudents = new AddStudents(number,name,sex,chinese,math,english,table);
         if (addStudents.j()==1){ //输入的格式正确
             dispose();
         }
@@ -164,4 +167,5 @@ public class Addstuden extends JFrame {
     private JButton Add1;
     private JRadioButton Man;
     private JRadioButton Woman;
+
 }

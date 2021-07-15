@@ -1,8 +1,5 @@
-/*
- * Created by JFormDesigner on Sun Jul 11 10:39:22 AWST 2021
- */
-
 package view;
+import main_information.Set_Table;
 import main_information.String_Function;
 
 import java.awt.*;
@@ -10,12 +7,12 @@ import java.awt.event.*;
 import java.util.Objects;
 import javax.swing.*;
 
-/**
- * @author cjl
- */
+
 public class DeleteStudents extends JFrame {
-    public static void main(String[] args){new DeleteStudents();}
-    public DeleteStudents() {
+    JTable table;
+    public static void main(String[] args){new DeleteStudents(null);}
+    public DeleteStudents(JTable table) {
+        this.table=table;
         setVisible(true);
         setTitle("删除学生信息");
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -35,6 +32,7 @@ public class DeleteStudents extends JFrame {
                 int is_delete = JOptionPane.showConfirmDialog(null,"是否删除该学生信息","注意",JOptionPane.YES_NO_OPTION);
                 if (is_delete==JOptionPane.YES_OPTION){
                     string_function.delete(i);
+                    new Set_Table(table,string_function.get_s(),0);
                     dispose();
                 }
                 break;

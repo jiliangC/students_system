@@ -1,30 +1,23 @@
-/*
- * Created by JFormDesigner on Sun Jul 11 23:24:48 AWST 2021
- */
-
 package view;
 
 import main_information.Revise_things;
 import main_information.Set_Table;
+import main_information.String_Function;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Objects;
 import javax.swing.*;
-import javax.swing.event.TableModelEvent;
-import javax.swing.event.TableModelListener;
 import javax.swing.table.*;
 
-/**
- * @author unknown
- */
 public class Revise extends JFrame {
+    JTable table;
     public static void main(String[] args) {
-        new Revise();
+        new Revise(null);
     }
-    public Revise() {
+    public Revise(JTable table) {
+        this.table = table;
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setTitle("修改学生信息");
         setVisible(true);
@@ -37,8 +30,6 @@ public class Revise extends JFrame {
     Revise_things revise_things = new Revise_things();
     private void button1ActionPerformed(ActionEvent e) {
         String number = textField1.getText();
-        //ArrayList<String[]> strings=revise_things.search(number);
-        //String[][] str_s = strings.toArray(new String[0][0]);
         String[][] str_s = revise_things.search(number);
         new Set_Table(table1,str_s,1);
 
@@ -54,6 +45,8 @@ public class Revise extends JFrame {
         int k = revise_things.set_information(new_information,index);
         if (k==1){
             JOptionPane.showMessageDialog(null,"学生信息修改成功");
+            String_Function string_function = new String_Function();
+            new Set_Table(table, string_function.get_s(), 0);
         }
         System.out.println(Arrays.toString(new_information));
     }
@@ -69,8 +62,6 @@ public class Revise extends JFrame {
 
     private void initComponents() {
 
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unknown
         label1 = new JLabel();
         textField1 = new JTextField();
         button1 = new JButton();
@@ -133,13 +124,10 @@ public class Revise extends JFrame {
         contentPane.setPreferredSize(new Dimension(605, 300));
         pack();
         setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
         button1.setContentAreaFilled(false);
         button2.setContentAreaFilled(false);
     }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
 
     private JLabel label1;
     private JTextField textField1;
@@ -148,5 +136,4 @@ public class Revise extends JFrame {
     private JTable table1;
     private JButton button2;
 
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

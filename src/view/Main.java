@@ -1,7 +1,3 @@
-/*
- * Created by JFormDesigner on Wed Jul 07 20:07:42 AWST 2021
- */
-
 package view;
 import main_information.File_information;
 import main_information.Set_Table;
@@ -31,7 +27,7 @@ public class Main extends JFrame {
     }
 
     private void menu1Item1ActionPerformed(ActionEvent e) { //增加
-        new Addstuden();
+        new Addstuden(table1);
         // TODO add your code here
     }
 
@@ -44,8 +40,8 @@ public class Main extends JFrame {
     }
 
 
-    private void menu1Item2ActionPerformed(ActionEvent e) {
-        new DeleteStudents();
+    private void menu1Item2ActionPerformed(ActionEvent e) { //删除
+        new DeleteStudents(table1);
         // TODO add your code here
     }
 
@@ -55,7 +51,7 @@ public class Main extends JFrame {
     }
 
     private void menu1Item4ActionPerformed(ActionEvent e) {
-        new Revise();
+        new Revise(table1);
         // TODO add your code here
     }
     
@@ -84,9 +80,6 @@ public class Main extends JFrame {
         String_Function string_function = new String_Function();
         String[][] str_s = string_function.get_s();
 
-
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unknown
         menuBar1 = new JMenuBar();
         menu1 = new JMenu();
         menu1Item1 = new JMenuItem();
@@ -242,13 +235,10 @@ public class Main extends JFrame {
         contentPane.add(panel1, BorderLayout.CENTER);
         setSize(710, 440);
         setLocationRelativeTo(null);
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
 
         button1.setContentAreaFilled(false);
     }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
     private JMenuBar menuBar1;
     private JMenu menu1;
     private JMenuItem menu1Item1;
@@ -266,5 +256,4 @@ public class Main extends JFrame {
     private JPanel panel1;
     private JScrollPane scrollPane1;
     private JTable table1;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

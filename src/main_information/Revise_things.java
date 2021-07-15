@@ -1,7 +1,6 @@
 package main_information;
 
 import javax.swing.*;
-import java.util.ArrayList;
 
 public class Revise_things {
     static int i; //存在i个学号相同

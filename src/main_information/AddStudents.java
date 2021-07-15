@@ -1,11 +1,10 @@
 package main_information;
-
 import javax.swing.*;
 
-
 public class AddStudents {
-    int i = 0;
 
+    JTable table1;
+    int i = 0;
     public static boolean isNumeric(String str){
         for (int i = str.length()-1;i>-1;i--){
             if (!Character.isDigit(str.charAt(i))){
@@ -19,8 +18,8 @@ public class AddStudents {
         return this.i;
     }
 
-    public AddStudents(String number,String name,String sex,String chinese,String math,String english){
-        //Str_information str_information=new Str_information();
+    public AddStudents(String number,String name,String sex,String chinese,String math,String english,JTable table){
+        this.table1=table;
         String_Function string_function = new String_Function();
 
         int judge = 0;
@@ -53,7 +52,10 @@ public class AddStudents {
                     JOptionPane.showMessageDialog(null, info);
                     String[] a ={number,name,sex,chinese,math,english,String.valueOf(ch+ma+en)};
                     this.i=1;
-                    string_function.set_s(a);}
+                    string_function.set_s(a);
+                    new Set_Table(table1,string_function.get_s(),0);
+
+            }
             else {
                 JOptionPane.showMessageDialog(null,"成绩满分为100");
             }

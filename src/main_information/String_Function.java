@@ -31,16 +31,13 @@ public class String_Function {
         String_Function.str_a=add(String_Function.str_a,strings);
         write_to_file(String_Function.str_a);
     }
-    public void replace(String[][] strings){
-        String_Function.str_a=strings;
-        write_to_file(String_Function.str_a);
-    }
     public void modify(int index,String[] strings){
         String_Function.str_a[index]=strings;
         write_to_file(String_Function.str_a);
     }
     public void delete(int index){
         String_Function.str_a=reduce(index,String_Function.str_a);
+        write_to_file(String_Function.str_a);
     }
 
     //将数组写入文本

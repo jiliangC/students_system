@@ -21,6 +21,7 @@ public class Help extends JFrame {
         label3 = new JLabel();
         label4 = new JLabel();
         label5 = new JLabel();
+        label6 = new JLabel();
 
         //======== this ========
         setIconImage(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/students.png"))).getImage());
@@ -28,40 +29,45 @@ public class Help extends JFrame {
         contentPane.setLayout(null);
 
         //---- label2 ----
-        label2.setText("\u6bcf\u8fdb\u884c\u4e00\u6b21\u6570\u636e\u64cd\u4f5c\u9700\u8981\u5237\u65b0");
+        label2.setText("学号长度为10，成绩满分为100分");
         label2.setHorizontalAlignment(SwingConstants.LEFT);
         label2.setFont(new Font("sansserif", Font.BOLD, 14));
         contentPane.add(label2);
-        label2.setBounds(30, 15, 330, 25);
+        label2.setBounds(30, 15, 430, 25);
 
         //---- label3 ----
-        label3.setText("\u5b66\u53f7\u4e3a\u5341\u4f4d\u6570\uff0c\u5404\u79d1\u6210\u7ee9\u6ee1\u5206100");
+        label3.setText("搜索功能可以搜索名字或学号");
         label3.setHorizontalAlignment(SwingConstants.LEFT);
         label3.setFont(new Font("sansserif", Font.BOLD, 14));
         contentPane.add(label3);
-        label3.setBounds(30, 40, 330, 25);
+        label3.setBounds(30, 40, 430, 25);
 
         //---- label4 ----
-        label4.setText("\u70b9\u51fb\u4fee\u6539\u529f\u80fd\u540e\u518d\u70b9\u51fb\u8868\u683c\u7684\u6570\u636e\u5c31\u53ef\u4ee5\u4fee\u6539");
+        label4.setText("修改功能在搜索出来后修改表格的数据即可修改学生信息");
         label4.setFont(new Font("sansserif", Font.BOLD, 14));
         contentPane.add(label4);
-        label4.setBounds(30, 65, 330, 25);
+        label4.setBounds(30, 65, 430, 25);
 
         //---- label5 ----
-        label5.setText("\u4ee5\u4e0a\u662f\u4fdd\u59c6\u7ea7\u6559\u7a0b");
+        label5.setText("刷新按钮是原来技术不够加上去刷新表格的，现在没必要了，懒得删了");
         label5.setFont(new Font("sansserif", Font.BOLD, 14));
         contentPane.add(label5);
-        label5.setBounds(30, 90, 330, 25);
+        label5.setBounds(30, 90, 500, 25);
 
-        contentPane.setPreferredSize(new Dimension(400, 130));
+        //---- label6 ----
+        label6.setText("更多BUG，自行发现");
+        label6.setFont(new Font("sansserif", Font.BOLD, 14));
+        contentPane.add(label6);
+        label6.setBounds(30, 115, 500, 25);
+
+        contentPane.setPreferredSize(new Dimension(530, 155));
         pack();
         setLocationRelativeTo(getOwner());
-
     }
-
 
     private JLabel label2;
     private JLabel label3;
     private JLabel label4;
     private JLabel label5;
+    private JLabel label6;
 }
