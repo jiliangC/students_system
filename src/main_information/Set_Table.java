@@ -2,13 +2,50 @@ package main_information;
 
 import javax.swing.*;
 import javax.swing.event.TableModelEvent;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
-import javax.swing.table.TableModel;
+import javax.swing.table.*;
+import java.awt.*;
+
+
+class MyCellEditor extends DefaultCellEditor {
+
+    public MyCellEditor(JTextField textField) {
+        super(textField);
+    }
+
+    public MyCellEditor(JCheckBox checkBox) {
+        super(checkBox);
+    }
+
+    public MyCellEditor(JComboBox comboBox) {
+        super(comboBox);
+    }
+
+    @Override
+    public boolean stopCellEditing() {
+        // 获取当前单元格的编辑器组件
+        Component comp = getComponent();
+
+        // 获取当前单元格编辑器输入的值
+        Object obj = getCellEditorValue();
+
+        // 如果当前单元格编辑器输入的值不是数字，则返回 false（表示数据非法，不允许设置，无法保存）
+        if (obj == null || !obj.toString().matches("[0-9]*")||Integer.parseInt(obj.toString())>100||Integer.parseInt(obj.toString())<0) {
+            // 数据非法时，设置编辑器组件内的内容颜色为红色
+            comp.setForeground(Color.RED);
+            JOptionPane.showMessageDialog(null,"请输入正确的格式");
+            return false;
+        }
+        // 数据合法时，设置编辑器组件内的内容颜色为黑色
+        comp.setForeground(Color.BLACK);
+        // 合法数据交给父类处理
+        return super.stopCellEditing();
+    }
+}
+
 
 public class Set_Table {
     public Set_Table(JTable table1,String[][] str_s,int judge){
+        String[] columnNames = { "学号", "姓名", "性别", "语文", "数学", "英语", "总分"};
         DefaultTableCellRenderer tcr = new DefaultTableCellRenderer();//单元格渲染器
 
         tcr.setHorizontalAlignment(JLabel.CENTER);//居中显示
@@ -17,9 +54,7 @@ public class Set_Table {
         if (judge==0){
             table1.setModel(new DefaultTableModel(
                     str_s,
-                    new String[]{
-                            "学号", "姓名", "性别", "语文", "数学", "英语", "总分"
-                    }
+                    columnNames
             ) {
                 //单元格不可编辑
                 boolean[] columnEditable = new boolean[]{
@@ -34,9 +69,7 @@ public class Set_Table {
         else {
             table1.setModel(new DefaultTableModel(
                     str_s,
-                    new String[]{
-                            "学号", "姓名", "性别", "语文", "数学", "英语", "总分"
-                    }
+                    columnNames
             ) {
                 Class<?>[] columnTypes = new Class<?>[]{
                         String.class, String.class, String.class, Integer.class,Integer.class, Integer.class, Integer.class
@@ -104,6 +137,20 @@ public class Set_Table {
                     }
                 }
             });
+
+            // 创建单元格编辑器，使用文本框作为编辑组件
+            MyCellEditor cellEditor = new MyCellEditor(new JTextField());
+
+            // 遍历表格中所有数字列，并设置列单元格的编辑器
+            String[] c={"语文", "数学", "英语"};
+            for (int i = 0; i < c.length; i++) {
+                // 根据 列名 获取 表格列
+                TableColumn tableColumn = table1.getColumn(c[i]);
+                // 设置 表格列 的 单元格编辑器
+                tableColumn.setCellEditor(cellEditor);
+            }
+
+
         }//单元格可编辑
         {
             //单元格不可拉伸
