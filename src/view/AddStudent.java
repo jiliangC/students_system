@@ -1,20 +1,29 @@
 package view;
 
 import main_information.AddStudents;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.Objects;
 import javax.swing.*;
 
 
-public class Addstuden extends JFrame {
-    JTable table;
+public class AddStudent extends JFrame {
+    JTable table;  //Main的table
+    private JTextField Number;
+    private JTextField Name;
+    private JTextField Chinese;
+    private JTextField Maths;
+    private JTextField English;
+    private JRadioButton Man;
+    private JRadioButton Woman;
+
     public static void main(String[] args) {
-        new Addstuden(null);
+        new AddStudent(null);
     }
 
-    public Addstuden(JTable table1) {
-        this.table=table1;
+    public AddStudent(JTable table1) {
+        this.table = table1;
         setTitle("增加学生信息");
         setVisible(true);
         initComponents();
@@ -24,26 +33,27 @@ public class Addstuden extends JFrame {
     }
 
     //添加按钮事件
-    private void button1ActionPerformed(ActionEvent e) {
-        int judge =0;
+    private void add(ActionEvent e) {
         String name = Name.getText();
         String number = Number.getText();
         String sex = (Man.isSelected()) ? "男" : "女";
         String chinese = Chinese.getText();
         String math = Maths.getText();
         String english = English.getText();
-        AddStudents addStudents = new AddStudents(number,name,sex,chinese,math,english,table);
-        if (addStudents.j()==1){ //输入的格式正确
+        AddStudents addStudents = new AddStudents(number, name, sex, chinese, math, english, table);
+        if (addStudents.j() == 1) { //输入的格式正确
             dispose();
         }
 
     }
+
     //单选框 点击事件
     private void manActionPerformed(ActionEvent e) {
         if (Man.isSelected()) {
             Woman.setSelected(false);
         }
     }
+
     private void WomanActionPerformed(ActionEvent e) {
         if (Woman.isSelected()) {
             Man.setSelected(false);
@@ -53,18 +63,18 @@ public class Addstuden extends JFrame {
     //UI设计
     private void initComponents() {
         JPanel panel1 = new JPanel();
-        panel2 = new JPanel();
-        label1 = new JLabel();
+        JPanel panel2 = new JPanel();
+        JLabel num_label = new JLabel();
         Number = new JTextField();
-        label2 = new JLabel();
+        JLabel name_label = new JLabel();
         Name = new JTextField();
-        label4 = new JLabel();
+        JLabel ch_label = new JLabel();
         Chinese = new JTextField();
-        label5 = new JLabel();
+        JLabel ma_label = new JLabel();
         Maths = new JTextField();
-        label6 = new JLabel();
+        JLabel en_label = new JLabel();
         English = new JTextField();
-        Add1 = new JButton();
+        JButton add_button = new JButton();
         Man = new JRadioButton();
         Woman = new JRadioButton();
 
@@ -73,8 +83,7 @@ public class Addstuden extends JFrame {
         Chinese.setOpaque(false);
         Maths.setOpaque(false);
         English.setOpaque(false);
-        Add1.setContentAreaFilled(false);
-
+        add_button.setContentAreaFilled(false);
 
 
         //======== this ========
@@ -89,46 +98,46 @@ public class Addstuden extends JFrame {
             {
                 panel2.setLayout(null);
 
-                //---- label1 ----
-                label1.setText("学号");
-                panel2.add(label1);
-                label1.setBounds(70, 35, label1.getPreferredSize().width, 25);
+                //---- num_label ----
+                num_label.setText("学号");
+                panel2.add(num_label);
+                num_label.setBounds(70, 35, num_label.getPreferredSize().width, 25);
                 panel2.add(Number);
                 Number.setBounds(110, 35, 150, 25);
 
-                //---- label2 ----
-                label2.setText("姓名");
-                panel2.add(label2);
-                label2.setBounds(70, 80, label2.getPreferredSize().width, 25);
+                //---- name_label ----
+                name_label.setText("姓名");
+                panel2.add(name_label);
+                name_label.setBounds(70, 80, name_label.getPreferredSize().width, 25);
                 panel2.add(Name);
                 Name.setBounds(110, 80, 150, 25);
 
-                //---- label4 ----
-                label4.setText("语文");
-                panel2.add(label4);
-                label4.setBounds(70, 170, label4.getPreferredSize().width, 25);
+                //---- ch_label ----
+                ch_label.setText("语文");
+                panel2.add(ch_label);
+                ch_label.setBounds(70, 170, ch_label.getPreferredSize().width, 25);
                 panel2.add(Chinese);
                 Chinese.setBounds(110, 170, 150, 25);
 
-                //---- label5 ----
-                label5.setText("数学");
-                panel2.add(label5);
-                label5.setBounds(70, 215, label5.getPreferredSize().width, 25);
+                //---- ma_label ----
+                ma_label.setText("数学");
+                panel2.add(ma_label);
+                ma_label.setBounds(70, 215, ma_label.getPreferredSize().width, 25);
                 panel2.add(Maths);
                 Maths.setBounds(110, 215, 150, 25);
 
-                //---- label6 ----
-                label6.setText("英语");
-                panel2.add(label6);
-                label6.setBounds(70, 260, label6.getPreferredSize().width, 25);
+                //---- en_label ----
+                en_label.setText("英语");
+                panel2.add(en_label);
+                en_label.setBounds(70, 260, en_label.getPreferredSize().width, 25);
                 panel2.add(English);
                 English.setBounds(110, 260, 150, 25);
 
-                //---- Add1 ----
-                Add1.setText("添加");
-                Add1.addActionListener(this::button1ActionPerformed);
-                panel2.add(Add1);
-                Add1.setBounds(70, 320, 190, 25);
+                //---- add_button ----
+                add_button.setText("添加");
+                add_button.addActionListener(this::add);
+                panel2.add(add_button);
+                add_button.setBounds(70, 320, 190, 25);
 
                 //---- Man ----
                 Man.setText("男");
@@ -153,19 +162,5 @@ public class Addstuden extends JFrame {
         setLocationRelativeTo(getOwner());
     }
 
-    private JPanel panel2;
-    private JLabel label1;
-    private JTextField Number;
-    private JLabel label2;
-    private JTextField Name;
-    private JLabel label4;
-    private JTextField Chinese;
-    private JLabel label5;
-    private JTextField Maths;
-    private JLabel label6;
-    private JTextField English;
-    private JButton Add1;
-    private JRadioButton Man;
-    private JRadioButton Woman;
 
 }

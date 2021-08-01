@@ -1,16 +1,17 @@
 package view;
 import main_information.Set_Table;
 import main_information.String_Function;
-
 import java.awt.*;
-import java.awt.event.*;
 import java.util.Objects;
 import javax.swing.*;
 
 
 public class DeleteStudents extends JFrame {
-    JTable table;
+    JTable table; //Main的table
+    private JTextField num_text;
+
     public static void main(String[] args){new DeleteStudents(null);}
+
     public DeleteStudents(JTable table) {
         this.table=table;
         setVisible(true);
@@ -21,8 +22,8 @@ public class DeleteStudents extends JFrame {
         setIconImage(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/students.png"))).getImage());
     }
 
-    private void deleteActionPerformed(ActionEvent e) {
-        String number = textField1.getText();
+    private void delete_go() {
+        String number = num_text.getText();
         int index=-1;
         String_Function string_function = new String_Function();
         String[][] strings = string_function.get_s();
@@ -41,50 +42,38 @@ public class DeleteStudents extends JFrame {
         if (index==-1){
             JOptionPane.showMessageDialog(null,"未找到该学生信息");
         }
-
-
-
         // TODO add your code here
     }
 
     private void initComponents() {
-        // JFormDesigner - Component initialization - DO NOT MODIFY  //GEN-BEGIN:initComponents
-        // Generated using JFormDesigner Evaluation license - unknown
-        textField1 = new JTextField();
-        label1 = new JLabel();
-        delete = new JButton();
+        num_text = new JTextField();
+        JLabel num_label = new JLabel();
+        JButton delete = new JButton();
 
         //======== this ========
         var contentPane = getContentPane();
         contentPane.setLayout(null);
 
-        //---- textField1 ----
-        textField1.setOpaque(false);
-        contentPane.add(textField1);
-        textField1.setBounds(85, 60, 150, 25);
+        //---- num_text ----
+        num_text.setOpaque(false);
+        contentPane.add(num_text);
+        num_text.setBounds(85, 60, 150, 25);
 
-        //---- label1 ----
-        label1.setText("\u5b66\u53f7");
-        contentPane.add(label1);
-        label1.setBounds(45, 60, 30, 25);
+        //---- num_label ----
+        num_label.setText("学号");
+        contentPane.add(num_label);
+        num_label.setBounds(45, 60, 30, 25);
 
         //---- delete ----
-        delete.setText("\u5220\u9664");
-        delete.addActionListener(e -> deleteActionPerformed(e));
+        delete.setText("删除");
+        delete.addActionListener(e -> delete_go());
         contentPane.add(delete);
         delete.setBounds(45, 105, 190, 25);
 
         contentPane.setPreferredSize(new Dimension(280, 190));
         pack();
         setLocationRelativeTo(getOwner());
-        // JFormDesigner - End of component initialization  //GEN-END:initComponents
         delete.setContentAreaFilled(false);
     }
 
-    // JFormDesigner - Variables declaration - DO NOT MODIFY  //GEN-BEGIN:variables
-    // Generated using JFormDesigner Evaluation license - unknown
-    private JTextField textField1;
-    private JLabel label1;
-    private JButton delete;
-    // JFormDesigner - End of variables declaration  //GEN-END:variables
 }

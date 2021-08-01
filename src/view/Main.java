@@ -1,17 +1,16 @@
 package view;
+
 import main_information.File_information;
 import main_information.Set_Table;
 import main_information.String_Function;
+
 import java.awt.*;
-import java.awt.event.*;
 import java.util.Objects;
 import javax.swing.*;
 import javax.swing.border.*;
 
-/**
- * @author cjl
- */
 public class Main extends JFrame {
+    private JTable table;
 
     public static void main(String[] args) {
         new Main();
@@ -26,52 +25,51 @@ public class Main extends JFrame {
         setIconImage(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/students.png"))).getImage());
     }
 
-    private void menu1Item1ActionPerformed(ActionEvent e) { //增加
-        new Addstuden(table1);
+    private void add_students() { //增加
+        new AddStudent(table);
         // TODO add your code here
     }
 
-    private void button1ActionPerformed(ActionEvent e) { //刷新按钮
+    private void refresh() { //刷新
         String_Function string_function = new String_Function();
-        String[][] str_s=string_function.get_s();
-        new Set_Table(table1,str_s,0);
-
+        String[][] str_s = string_function.get_s();
+        new Set_Table(table, str_s, 0);
         // TODO add your code here
     }
 
-
-    private void menu1Item2ActionPerformed(ActionEvent e) { //删除
-        new DeleteStudents(table1);
+    private void delete_students() { //删除
+        new DeleteStudents(table);
         // TODO add your code here
     }
 
-    private void menu1Item3ActionPerformed(ActionEvent e) {
+    private void search_students() { //搜索
         new Search();
         // TODO add your code here
     }
 
-    private void menu1Item4ActionPerformed(ActionEvent e) {
-        new Revise(table1);
+    private void revise_students() { //修改
+        new Revise(table);
         // TODO add your code here
     }
-    
-    File_information file_information = new File_information();//导入学生信息 bug太多暂时不写
-    private void menuItem2ActionPerformed(ActionEvent e) {
+
+    File_information file_information = new File_information();//导入学生信息
+
+    private void import_students() {
         //file_information.showFileOpenDialog();
         // TODO add your code here
     }
 
-    private void menuItem3ActionPerformed(ActionEvent e) { //导出学生信息
+    private void export_students() { //导出学生信息
         file_information.showFileSaveDialog();
         // TODO add your code here
     }
 
-    private void menuItem5ActionPerformed(ActionEvent e) {
+    private void helps() { //帮助
         new Help();
         // TODO add your code here
     }
 
-    private void menuItem6ActionPerformed(ActionEvent e) {
+    private void about() { //关于
         new About();
         // TODO add your code here
     }
@@ -80,28 +78,28 @@ public class Main extends JFrame {
         String_Function string_function = new String_Function();
         String[][] str_s = string_function.get_s();
 
-        menuBar1 = new JMenuBar();
-        menu1 = new JMenu();
-        menu1Item1 = new JMenuItem();
-        menu1Item2 = new JMenuItem();
-        menu1Item3 = new JMenuItem();
-        menu1Item4 = new JMenuItem();
-        menu2 = new JMenu();
-        menuItem2 = new JMenuItem();
-        menuItem3 = new JMenuItem();
-        menu3 = new JMenu();
-        menuItem5 = new JMenuItem();
-        menuItem6 = new JMenuItem();
-        panel2 = new JPanel();
-        button1 = new JButton();
-        panel1 = new JPanel();
-        scrollPane1 = new JScrollPane();
-        table1 = new JTable();
+        JMenuBar menuBar1 = new JMenuBar();
+        JMenu operation = new JMenu();
+        JMenuItem operation_add = new JMenuItem();
+        JMenuItem operation_delete = new JMenuItem();
+        JMenuItem operation_search = new JMenuItem();
+        JMenuItem operation_revise = new JMenuItem();
+        JMenu export = new JMenu();
+        JMenuItem menuItem2 = new JMenuItem();
+        JMenuItem export_info = new JMenuItem();
+        JMenu help_about = new JMenu();
+        JMenuItem help_use = new JMenuItem();
+        JMenuItem about_use = new JMenuItem();
+        JPanel panel2 = new JPanel();
+        JButton refresh_button = new JButton();
+        JPanel panel1 = new JPanel();
+        JScrollPane scrollPane1 = new JScrollPane();
+        table = new JTable();
 
         //======== this ========
         setForeground(SystemColor.menu);
         setFont(new Font(Font.DIALOG, Font.PLAIN, 13));
-        setIconImage(new ImageIcon(getClass().getResource("/icon/students.png")).getImage());
+        setIconImage(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/students.png"))).getImage());
         var contentPane = getContentPane();
         contentPane.setLayout(new BorderLayout());
 
@@ -110,91 +108,91 @@ public class Main extends JFrame {
             menuBar1.setPreferredSize(new Dimension(183, 30));
             menuBar1.setBorderPainted(false);
 
-            //======== menu1 ========
+            //======== operation ========
             {
-                menu1.setText("\u57fa\u672c\u64cd\u4f5c");
-                menu1.setPreferredSize(null);
-                menu1.setRolloverIcon(null);
-                menu1.setPressedIcon(null);
-                menu1.setIcon(null);
-                menu1.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+                operation.setText("基本操作");
+                operation.setPreferredSize(null);
+                operation.setRolloverIcon(null);
+                operation.setPressedIcon(null);
+                operation.setIcon(null);
+                operation.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
 
-                //---- menu1Item1 ----
-                menu1Item1.setText("\u6dfb\u52a0");
-                menu1Item1.setIcon(new ImageIcon(getClass().getResource("/icon/plus.png")));
-                menu1Item1.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
-                menu1Item1.addActionListener(e -> menu1Item1ActionPerformed(e));
-                menu1.add(menu1Item1);
+                //---- operation_add ----
+                operation_add.setText("添加");
+                operation_add.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/plus.png"))));
+                operation_add.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+                operation_add.addActionListener(e -> add_students());
+                operation.add(operation_add);
 
-                //---- menu1Item2 ----
-                menu1Item2.setText("\u5220\u9664");
-                menu1Item2.setIcon(new ImageIcon(getClass().getResource("/icon/reduce.png")));
-                menu1Item2.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
-                menu1Item2.addActionListener(e -> menu1Item2ActionPerformed(e));
-                menu1.add(menu1Item2);
+                //---- operation_delete ----
+                operation_delete.setText("删除");
+                operation_delete.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/reduce.png"))));
+                operation_delete.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+                operation_delete.addActionListener(e -> delete_students());
+                operation.add(operation_delete);
 
-                //---- menu1Item3 ----
-                menu1Item3.setText("\u67e5\u627e");
-                menu1Item3.setIcon(new ImageIcon(getClass().getResource("/icon/search.png")));
-                menu1Item3.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
-                menu1Item3.addActionListener(e -> menu1Item3ActionPerformed(e));
-                menu1.add(menu1Item3);
+                //---- operation_search ----
+                operation_search.setText("查找");
+                operation_search.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/search.png"))));
+                operation_search.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+                operation_search.addActionListener(e -> search_students());
+                operation.add(operation_search);
 
-                //---- menu1Item4 ----
-                menu1Item4.setText("\u4fee\u6539");
-                menu1Item4.setIcon(new ImageIcon(getClass().getResource("/icon/change.png")));
-                menu1Item4.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
-                menu1Item4.addActionListener(e -> menu1Item4ActionPerformed(e));
-                menu1.add(menu1Item4);
+                //---- operation_revise ----
+                operation_revise.setText("修改");
+                operation_revise.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/change.png"))));
+                operation_revise.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+                operation_revise.addActionListener(e -> revise_students());
+                operation.add(operation_revise);
             }
-            menuBar1.add(menu1);
+            menuBar1.add(operation);
 
-            //======== menu2 ========
+            //======== export ========
             {
-                menu2.setText("\u5bfc\u51fa\u4fe1\u606f");
-                menu2.setMinimumSize(null);
-                menu2.setIcon(null);
-                menu2.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+                export.setText("导出信息");
+                export.setMinimumSize(null);
+                export.setIcon(null);
+                export.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
 
-                //---- menuItem2 ----
-                menuItem2.setText("\u5bfc\u5165\u5b66\u751f\u4fe1\u606f");
+                //---- menuItem2 ---- 隐藏
+                menuItem2.setText("导入学生信息");
                 menuItem2.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
-                menuItem2.setIcon(new ImageIcon(getClass().getResource("/icon/import.png")));
+                menuItem2.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/import.png"))));
                 menuItem2.setVisible(false);
-                menuItem2.addActionListener(e -> menuItem2ActionPerformed(e));
-                menu2.add(menuItem2);
+                menuItem2.addActionListener(e -> import_students());
+                export.add(menuItem2);
 
-                //---- menuItem3 ----
-                menuItem3.setText("\u5bfc\u51fa\u5b66\u751f\u4fe1\u606f");
-                menuItem3.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
-                menuItem3.setIcon(new ImageIcon(getClass().getResource("/icon/export.png")));
-                menuItem3.addActionListener(e -> menuItem3ActionPerformed(e));
-                menu2.add(menuItem3);
+                //---- export_info ----
+                export_info.setText("导出学生信息");
+                export_info.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+                export_info.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/export.png"))));
+                export_info.addActionListener(e -> export_students());
+                export.add(export_info);
             }
-            menuBar1.add(menu2);
+            menuBar1.add(export);
 
-            //======== menu3 ========
+            //======== help_about ========
             {
-                menu3.setText("\u5e2e\u52a9\u5173\u4e8e");
-                menu3.setPreferredSize(null);
-                menu3.setIcon(null);
-                menu3.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+                help_about.setText("帮助关于");
+                help_about.setPreferredSize(null);
+                help_about.setIcon(null);
+                help_about.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
 
-                //---- menuItem5 ----
-                menuItem5.setText("\u5e2e\u52a9");
-                menuItem5.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
-                menuItem5.setIcon(new ImageIcon(getClass().getResource("/icon/help.png")));
-                menuItem5.addActionListener(e -> menuItem5ActionPerformed(e));
-                menu3.add(menuItem5);
+                //---- help_use ----
+                help_use.setText("帮助");
+                help_use.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+                help_use.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/help.png"))));
+                help_use.addActionListener(e -> helps());
+                help_about.add(help_use);
 
-                //---- menuItem6 ----
-                menuItem6.setText("\u5173\u4e8e");
-                menuItem6.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
-                menuItem6.setIcon(new ImageIcon(getClass().getResource("/icon/about.png")));
-                menuItem6.addActionListener(e -> menuItem6ActionPerformed(e));
-                menu3.add(menuItem6);
+                //---- about_use ----
+                about_use.setText("关于");
+                about_use.setFont(new Font("Microsoft YaHei UI", Font.BOLD, 14));
+                about_use.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/about.png"))));
+                about_use.addActionListener(e -> about());
+                help_about.add(about_use);
             }
-            menuBar1.add(menu3);
+            menuBar1.add(help_about);
 
             //======== panel2 ========
             {
@@ -202,13 +200,13 @@ public class Main extends JFrame {
                 panel2.setBorder(new EmptyBorder(2, 0, 0, 5));
                 panel2.setLayout(new FlowLayout(FlowLayout.RIGHT, 0, 0));
 
-                //---- button1 ----
-                button1.setText("\u5237\u65b0");
-                button1.setOpaque(true);
-                button1.setFont(new Font("sansserif", Font.BOLD, 10));
-                button1.setIcon(null);
-                button1.addActionListener(e -> button1ActionPerformed(e));
-                panel2.add(button1);
+                //---- refresh_button ----
+                refresh_button.setText("刷新");
+                refresh_button.setOpaque(true);
+                refresh_button.setFont(new Font("宋体", Font.BOLD, 10));
+                refresh_button.setIcon(null);
+                refresh_button.addActionListener(e -> refresh());
+                panel2.add(refresh_button);
             }
             menuBar1.add(panel2);
         }
@@ -221,14 +219,13 @@ public class Main extends JFrame {
             //======== scrollPane1 ========
             {
                 scrollPane1.setBorder(new EmptyBorder(5, 0, 0, 0));
-
-                //---- table1 ----
-                table1.setBorder(new EmptyBorder(5, 10, 10, 10));
-                table1.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
-                table1.setPreferredSize(null);
-                new Set_Table(table1,str_s,0);
-                table1.setSurrendersFocusOnKeystroke(true);
-                scrollPane1.setViewportView(table1);
+                //---- table ----
+                table.setBorder(new EmptyBorder(5, 10, 10, 10));
+                table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+                table.setPreferredSize(null);
+                new Set_Table(table, str_s, 0);
+                table.setSurrendersFocusOnKeystroke(true);
+                scrollPane1.setViewportView(table);
             }
             panel1.add(scrollPane1, BorderLayout.CENTER);
         }
@@ -236,24 +233,7 @@ public class Main extends JFrame {
         setSize(710, 440);
         setLocationRelativeTo(null);
 
-        button1.setContentAreaFilled(false);
+        refresh_button.setContentAreaFilled(false);
     }
 
-    private JMenuBar menuBar1;
-    private JMenu menu1;
-    private JMenuItem menu1Item1;
-    private JMenuItem menu1Item2;
-    private JMenuItem menu1Item3;
-    private JMenuItem menu1Item4;
-    private JMenu menu2;
-    private JMenuItem menuItem2;
-    private JMenuItem menuItem3;
-    private JMenu menu3;
-    private JMenuItem menuItem5;
-    private JMenuItem menuItem6;
-    private JPanel panel2;
-    private JButton button1;
-    private JPanel panel1;
-    private JScrollPane scrollPane1;
-    private JTable table1;
 }

@@ -15,10 +15,8 @@ class MyCellEditor extends DefaultCellEditor {
     public boolean stopCellEditing() {
         // 获取当前单元格的编辑器组件
         Component comp = getComponent();
-
         // 获取当前单元格编辑器输入的值
         Object obj = getCellEditorValue();
-
         // 如果当前单元格编辑器输入的值不是数字，则返回 false（表示数据非法，不允许设置，无法保存）
         if (obj == null || !obj.toString().matches("[0-9]*")||Integer.parseInt(obj.toString())>100||Integer.parseInt(obj.toString())<0) {
             // 数据非法时，设置编辑器组件内的内容颜色为红色

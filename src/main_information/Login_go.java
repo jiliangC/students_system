@@ -1,13 +1,14 @@
 package main_information;
 
 import view.Main;
+
 import javax.swing.*;
 
 public class Login_go {
     String username;
     String password;
 
-    public int go(){
+    public int go() {
         if (username.equals("1") && password.equals("1")) {
             String_Function string_function = new String_Function();
             string_function.read_from_file();
@@ -24,8 +25,8 @@ public class Login_go {
         }
     }
 
-    public Login_go(String username,String password){
-        this.username=username;
-        this.password=password;
+    public Login_go(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 }

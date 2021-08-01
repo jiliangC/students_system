@@ -2,7 +2,7 @@ package main_information;
 
 import java.io.*;
 import java.util.ArrayList;
-
+//已弃用
 public class Str_information {
     public static
     ArrayList<String[]> str_a = new ArrayList<>();

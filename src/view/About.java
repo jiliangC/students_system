@@ -1,6 +1,7 @@
 package view;
 
 import java.awt.*;
+import java.util.Objects;
 import javax.swing.*;
 
 public class About extends JFrame {
@@ -16,22 +17,22 @@ public class About extends JFrame {
     }
 
     private void initComponents() {
-        label1 = new JLabel();
-        label2 = new JLabel();
+        JLabel label1 = new JLabel();
+        JLabel label2 = new JLabel();
 
         //======== this ========
-        setIconImage(new ImageIcon(getClass().getResource("/icon/students.png")).getImage());
+        setIconImage(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/students.png"))).getImage());
         var contentPane = getContentPane();
         contentPane.setLayout(null);
 
         //---- label1 ----
-        label1.setIcon(new ImageIcon(getClass().getResource("/icon/about2.png")));
+        label1.setIcon(new ImageIcon(Objects.requireNonNull(getClass().getResource("/icon/about2.png"))));
         contentPane.add(label1);
         label1.setBounds(120, 45, 100, 100);
 
         //---- label2 ----
         label2.setText("扫码有惊喜");
-        label2.setFont(new Font("sansserif", Font.BOLD, 14));
+        label2.setFont(new Font("宋体", Font.BOLD, 14));
         label2.setHorizontalAlignment(SwingConstants.CENTER);
         contentPane.add(label2);
         label2.setBounds(120, 165, 100, 25);
@@ -40,6 +41,5 @@ public class About extends JFrame {
         pack();
         setLocationRelativeTo(getOwner());
     }
-    private JLabel label1;
-    private JLabel label2;
+
 }

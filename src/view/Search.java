@@ -1,16 +1,22 @@
 package view;
 
 import main_information.Search_go;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import java.util.Objects;
 
 public class Search extends JFrame {
+
+    private JTextField num_text;
+    private JTextField name_text;
+    private JTable table;
+
     public static void main(String[] args) {
         new Search();
     }
+
     public Search() {
         setTitle("学生信息查询");
         setVisible(true);
@@ -21,88 +27,80 @@ public class Search extends JFrame {
     }
 
 
-    private void button1ActionPerformed(ActionEvent e) {
-        String number = textField1.getText();
-        String name= textField2.getText();
-        Search_go search_go = new Search_go(table1);
-
-        String[][] str_s=search_go.get_result(number,name);
+    private void searcher() {
+        String number = num_text.getText();
+        String name = name_text.getText();
+        Search_go search_go = new Search_go(table);
+        String[][] str_s = search_go.get_result(number, name);
         search_go.set_Table(str_s);
         // TODO add your code here
     }
 
     private void initComponents() {
 
-        textField1 = new JTextField();
-        label1 = new JLabel();
-        textField2 = new JTextField();
-        label2 = new JLabel();
-        scrollPane1 = new JScrollPane();
-        table1 = new JTable();
-        button1 = new JButton();
+        num_text = new JTextField();
+        JLabel num_label = new JLabel();
+        name_text = new JTextField();
+        JLabel name_label = new JLabel();
+        JScrollPane scrollPane1 = new JScrollPane();
+        table = new JTable();
+        JButton searcher_button_button = new JButton();
 
         //======== this ========
         var contentPane = getContentPane();
         contentPane.setLayout(null);
 
-        //---- textField1 ----
-        textField1.setOpaque(false);
-        contentPane.add(textField1);
-        textField1.setBounds(65, 20, 120, 25);
+        //---- num_text ----
+        num_text.setOpaque(false);
+        contentPane.add(num_text);
+        num_text.setBounds(65, 20, 120, 25);
 
-        //---- label1 ----
-        label1.setText("\u5b66\u53f7");
-        label1.setFont(new Font("\u5b8b\u4f53", Font.BOLD, 12));
-        contentPane.add(label1);
-        label1.setBounds(30, 20, 35, 25);
+        //---- num_label ----
+        num_label.setText("学号");
+        num_label.setFont(new Font("宋体", Font.BOLD, 12));
+        contentPane.add(num_label);
+        num_label.setBounds(30, 20, 35, 25);
 
-        //---- textField2 ----
-        textField2.setOpaque(false);
-        contentPane.add(textField2);
-        textField2.setBounds(265, 20, 120, 25);
+        //---- name_text ----
+        name_text.setOpaque(false);
+        contentPane.add(name_text);
+        name_text.setBounds(265, 20, 120, 25);
 
-        //---- label2 ----
-        label2.setText("\u59d3\u540d");
-        label2.setFont(new Font("\u5b8b\u4f53", Font.BOLD, 12));
-        contentPane.add(label2);
-        label2.setBounds(230, 20, 35, 25);
+        //---- name_label ----
+        name_label.setText("姓名");
+        name_label.setFont(new Font("宋体", Font.BOLD, 12));
+        contentPane.add(name_label);
+        name_label.setBounds(230, 20, 35, 25);
 
         //======== scrollPane1 ========
         {
 
-            //---- table1 ----
-            table1.setModel(new DefaultTableModel(
-                new Object[][] {
-                },
-                new String[] {
-                    "\u5b66\u53f7", "\u59d3\u540d", "\u6027\u522b", "\u8bed\u6587", "\u6570\u5b66", "\u82f1\u8bed", "\u603b\u5206"
-                }
+            //---- table ----
+            table.setModel(new DefaultTableModel(
+                    new Object[][]{
+                    },
+                    new String[]{
+                            "学号", "姓名", "性别", "语文", "数学", "英语", "总分"
+                    }
             ));
-            table1.setSurrendersFocusOnKeystroke(true);
-            table1.setCellSelectionEnabled(true);
-            scrollPane1.setViewportView(table1);
+            table.setSurrendersFocusOnKeystroke(true);
+            table.setCellSelectionEnabled(true);
+            scrollPane1.setViewportView(table);
         }
         contentPane.add(scrollPane1);
         scrollPane1.setBounds(30, 65, 560, 225);
 
-        //---- button1 ----
-        button1.setText("\u641c\u7d22");
-        button1.setFont(new Font("\u5b8b\u4f53", Font.BOLD, 12));
-        button1.addActionListener(e -> button1ActionPerformed(e));
-        contentPane.add(button1);
-        button1.setBounds(530, 20, 60, 25);
+        //---- searcher_button ----
+        searcher_button_button.setText("搜索");
+        searcher_button_button.setFont(new Font("宋体", Font.BOLD, 12));
+        searcher_button_button.addActionListener(e -> searcher());
+        contentPane.add(searcher_button_button);
+        searcher_button_button.setBounds(530, 20, 60, 25);
 
         contentPane.setPreferredSize(new Dimension(620, 315));
         pack();
         setLocationRelativeTo(getOwner());
-        button1.setContentAreaFilled(false);
+        searcher_button_button.setContentAreaFilled(false);
     }
 
-    private JTextField textField1;
-    private JLabel label1;
-    private JTextField textField2;
-    private JLabel label2;
-    private JScrollPane scrollPane1;
-    private JTable table1;
-    private JButton button1;
 }
