@@ -56,7 +56,6 @@ public class File_information {
         jf.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         // 创建一个默认的文件选取器
         JFileChooser fileChooser = new JFileChooser();
-
         // 设置打开文件选择框后默认输入的文件名
         fileChooser.setSelectedFile(new File("Students_info.txt"));
         // 打开文件选择框（线程将被阻塞, 直到选择框被关闭）

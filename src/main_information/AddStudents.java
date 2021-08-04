@@ -48,7 +48,7 @@ public class AddStudents {
             int ch = Integer.parseInt(chinese);
             int ma = Integer.parseInt(math);
             int en = Integer.parseInt(english);
-            if (ch <= 100 || ma <= 100 || en <= 100) {
+            if (ch <= 100 && ma <= 100 && en <= 100) {
                 String info = "已添加\n" + "姓名 " + name + "\n" + "学号 " + number + "\n" + "性别 " + sex + "\n" + "语文 " + chinese + "  " + "数学 " + math + "  " + "英语 " + english;
                 JOptionPane.showMessageDialog(null, info);
                 String[] a = {number, name, sex, chinese, math, english, String.valueOf(ch + ma + en)};

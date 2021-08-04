@@ -82,6 +82,7 @@ public class Login extends JFrame {
                 panel2.setLayout(new FlowLayout());
                 //---- top ----
                 label2.setText("欢迎使用学生管理系统");
+                label2.setFont(new Font("宋体", Font.BOLD, 14));
                 panel2.add(label2);
             }
             panel1.add(panel2);
